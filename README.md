@@ -1,5 +1,5 @@
-# Steedos CMS
-Steedos CMS is an Enterprise Content Management System, with Yammer like communication features and Tumber like site publishing.
+# Steedos Sites
+Steedos Sites is an Enterprise Content Management System, with Yammer like communication features and Tumber like site publishing.
 
 > This is an meteor package running on [Steedos Apps Platform](https://github.com/steedos/apps/)
 

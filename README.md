@@ -1,5 +1,5 @@
 # Steedos Contents
-Yammer like communication and Tumber like site publishing.
+Steedos Contents is an Enterprise Content Management(ECM) System, with Yammer like communication features and Tumber like site publishing.
 
 > This is an meteor package running on [Steedos App Platform](https://github.com/steedos/apps/)
 

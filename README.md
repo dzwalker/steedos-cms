@@ -1,8 +1,9 @@
 # Steedos Contents
+Yammer like communication and Tumber like site publishing.
 
-> It's an meteor package running on [Steedos App Platform](https://github.com/steedos/apps/)
+> This is an meteor package running on [Steedos App Platform](https://github.com/steedos/apps/)
 
-Content management app for steedos,  Yammer like communication and Tumber like site publishing.
+### Designed Features
 
 - Site: A space may have multi sites. As first launch,  steedos will create a new site for space. 
 - Categories: Every site has categories tree, with max 5 levels, space admins can define categories for site. 

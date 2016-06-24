@@ -20,7 +20,9 @@ Package.onUse(function(api) {
     api.use('tracker');
     api.use('session');
     api.use('blaze');
+    api.use('templating');
     
+    api.use('flemay:less-autoprefixer');
     api.use('simple:json-routes');
     api.use('nimble:restivus');
     api.use('aldeed:simple-schema');
@@ -28,9 +30,12 @@ Package.onUse(function(api) {
     api.use('aldeed:tabular');
     api.use('aldeed:autoform');
     api.use('matb33:collection-hooks');
+    api.use('cfs:standard-packages');
+    api.use('kadira:blaze-layout');
+    api.use('kadira:flow-router');
 
     api.use('meteorhacks:ssr@2.2.0', 'server');
-
+    api.use('steedos:lib');
 
     api.use(['webapp'], 'server');
 
@@ -41,7 +46,48 @@ Package.onUse(function(api) {
     api.addFiles(tapi18nFiles, ['client', 'server']);
     
     api.addFiles('lib/core.coffee');
-    api.addFiles('lib/routes/site.coffee', 'server');
+    api.addFiles('lib/modals/categories.coffee');
+    api.addFiles('lib/modals/cfs_sites.coffee');
+    api.addFiles('lib/modals/comments.coffee');
+    api.addFiles('lib/modals/pages.coffee');
+    api.addFiles('lib/modals/posts.coffee');
+    api.addFiles('lib/modals/sites.coffee');
+    api.addFiles('lib/modals/tags.coffee');
+    api.addFiles('lib/modals/themes.coffee');
+
+    api.addFiles('client/views/_helpers.coffee', 'client');
+    api.addFiles('client/views/home.html', 'client');
+    api.addFiles('client/views/home.coffee', 'client');
+    api.addFiles('client/views/post_list_item.html', 'client');
+    api.addFiles('client/views/post_list_item.coffee', 'client');
+    api.addFiles('client/views/site_admin.html', 'client');
+    api.addFiles('client/views/site_admin.coffee', 'client');
+    api.addFiles('client/views/site_category.html', 'client');
+    api.addFiles('client/views/site_category.coffee', 'client');
+    api.addFiles('client/views/site_home.html', 'client');
+    api.addFiles('client/views/site_home.less', 'client');
+    api.addFiles('client/views/site_home.coffee', 'client');
+    api.addFiles('client/views/site_menu.html', 'client');
+    api.addFiles('client/views/site_menu.coffee', 'client');
+    api.addFiles('client/views/site_post.html', 'client');
+    api.addFiles('client/views/site_post.coffee', 'client');
+    api.addFiles('client/views/site_tagged.html', 'client');
+    api.addFiles('client/views/site_tagged.coffee', 'client');
+
+    api.addFiles('client/router.coffee', 'client');
+    api.addFiles('client/subscribe.coffee', 'client');
+
+    api.addFiles('server/methods/cms_init.coffee', 'server');
+    api.addFiles('server/methods/cms_site_build.coffee', 'server');
+
+    api.addFiles('server/publications/cfs_sites.coffee', 'server');
+    api.addFiles('server/publications/cms_categories.coffee', 'server');
+    api.addFiles('server/publications/cms_posts.coffee', 'server');
+    api.addFiles('server/publications/cms_sites.coffee', 'server');
+    api.addFiles('server/publications/cms_tags.coffee', 'server');
+    api.addFiles('server/publications/cms_themes.coffee', 'server');
+
+    api.addFiles('server/routes/site.coffee', 'server');
     api.addAssets('themes/default.html', 'server');
 
     // EXPORT

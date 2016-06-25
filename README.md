@@ -1,12 +1,12 @@
-# Steedos Sites
-Steedos Sites is an Enterprise Content Management System, with Yammer like communication features and Tumber like site publishing.
+# Steedos Blogs
+Steedos Blogs is an Content Management System, with Yammer like communication features and Tumber like site publishing.
 
 > This is an meteor package running on [Steedos Apps Platform](https://github.com/steedos/apps/)
 
 ### Designed Features
 
-- Site: A space may have multi sites. As first launch,  steedos will create a new site for space. 
-- Categories: Every site has categories tree, with max 5 levels, space admins can define categories for site. 
+- Blog: A space may have multi blogs. As first launch,  steedos will create a new blog for space. 
+- Categories: Every blog has categories tree, with max 5 levels, space admins can define categories for blog. 
 - Category Permissions:  Only specified organizations / users can see category and posts in category if it has permissions. 
 
 - Post Permissions: Only specified organizations / users can see posts if post has permissions. 

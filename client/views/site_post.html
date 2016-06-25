@@ -11,7 +11,7 @@
 		</span>
 		<div class="pull-right">
 			{{#if PostCanEdit}}
-		          	<a class="btn btn-primary" href="/admin/edit/cms_posts/{{PostId}}">{{_ "cms_button_edit"}}</a>
+		        <a class="btn btn-primary" href="/admin/edit/cms_posts/{{Post._id}}">{{_ "cms_button_edit"}}</a>
 			{{/if}}
 		</div>
 	</div>
@@ -28,7 +28,7 @@
 			            <img class="img-circle" src="/avatar/{{created_by}}" alt="User Image">
 			            <span class="username">{{title}}
 			            </span>
-			            <span class="description">{{SpaceUserName created_by}} - {{fromNow postDate}}</span>
+			            <span class="description">{{author_name}} - {{fromNow modified}}</span>
 			          </div>
 			          <div class="box-tools">
 

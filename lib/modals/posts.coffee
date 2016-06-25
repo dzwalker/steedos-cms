@@ -55,7 +55,7 @@ db.cms_posts._simpleSchema = new SimpleSchema
 	# 		omit: true
 	body: 
 		type: String,
-		optional: true,
+		optional: false,
 		autoform: 
 			rows: 10,
 			order: 30
@@ -111,6 +111,19 @@ db.cms_posts._simpleSchema = new SimpleSchema
 			omit: true
 			type: "bootstrap-datetimepicker"
 			
+	# The post author's name
+	author_name: 
+		type: String,
+		optional: true
+		autoform: 
+			omit: true
+	# The post author's `_id`. 
+	author: 
+		type: String,
+		optional: true,
+		autoform: 
+			omit: true
+
 	viewCount: 
 		type: Number,
 		optional: true
@@ -204,19 +217,6 @@ db.cms_posts._simpleSchema = new SimpleSchema
 		autoform: 
 			omit: true
 
-	# # The post author's name
-	# author_name: 
-	# 	type: String,
-	# 	optional: true
-	# 	autoform: 
-	# 		omit: true
-	# # The post author's `_id`. 
-	# author: 
-	# 	type: String,
-	# 	optional: true,
-	# 	autoform: 
-	# 		omit: true
-
 	created: 
 		type: Date,
 		optional: true
@@ -261,7 +261,10 @@ if Meteor.isServer
 
 		# 暂时默认为已核准
 		doc.status = db.cms_posts.config.STATUS_APPROVED
-
+		doc.author = userId
+		user = db.users.findOne({_id: userId})
+		if user
+			doc.author_name = user.name
 
 	db.cms_posts.after.insert (userId, doc) ->
 			

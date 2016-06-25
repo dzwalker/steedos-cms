@@ -23,19 +23,23 @@
 				{{> cms_site_menu}}
 			</div>
 			<div class="col-md-8">
+
+				<div class="box box-primary">
+		            <div class="box-header with-border">
+		              <h3 class="box-title"><i class="ion ion-ios-folder-outline"></i>&nbsp;&nbsp;{{Category.name}}</h3>
+		            </div>
+		            {{#if Category.description}}
+			            <div class="box-body">
+			            	{{Category.description}}
+			            </div>
+		            {{/if}}
+		        </div>
+
 				{{#if PostsCount}}
 					{{#each Posts 20}}
 						{{> cms_post_list_item}}
 					{{/each}}
 				{{else}}
-					<div class="box box-widget">
-			            <div class="box-header with-border">
-			              <h3 class="box-title">{{Category.name}}</h3>
-			            </div>
-			            <div class="box-body">
-			              {{_ "cms_posts_none"}}
-			            </div>
-			        </div>
 				{{/if}}
 			</div>
 

@@ -1,3 +1,11 @@
 {
-	"Steedos CMS": "CMS"
+	"Steedos CMS": "信息",
+
+    "cms_home": "首页",
+    "cms_button_new": "发布",
+    "cms_button_edit": "编辑",
+    "cms_button_admin": "设置",
+    "cms_button_back": "返回",
+
+    "cms_posts_none": "没有文章."
 }

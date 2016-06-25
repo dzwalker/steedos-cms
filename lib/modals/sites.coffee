@@ -29,9 +29,9 @@ db.cms_sites._simpleSchema = new SimpleSchema
 			rows: 3
 	view_permissions:
 		type: [String],
+		defaultValue: ["space_users"]
 		autoform:
 			type: "select-checkbox"
-			defaultValue: ["space_users"]
 			options: {
 				#owner: t("cms_site_permissions_owner")
 				space_users: t("cms_site_permissions_space_users")

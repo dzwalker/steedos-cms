@@ -10,8 +10,6 @@
 			<span>{{Site.name}}</span>
 		</span>
 		<div class="pull-right">
-			<a class="btn btn-default" href="/cms/{{SiteId}}/admin"><i class="ion ion-ios-gear-outline"></i></a>
-			<!-- <a class="btn btn-default" href="/site/{{SiteId}}" target="_blank"><i class="ion ion-ios-world-outline"></i></a> -->
 		</div>
 	</div>
 
@@ -27,12 +25,16 @@
 			    <div class="box box-widget">
 			        <div class="box-header with-border">
 			          <div class="user-block">
-			            <img class="img-circle" src="/avatar/{{author}}" alt="User Image">
+			            <img class="img-circle" src="/avatar/{{created_by}}" alt="User Image">
 			            <span class="username">{{title}}
 			            </span>
 			            <span class="description">{{author_name}} - {{fromNow postDate}}</span>
 			          </div>
 			          <div class="box-tools">
+
+						{{#if PostCanEdit}}
+					          	<a class="btn btn-primary" href="/admin/edit/cms_posts/{{PostId}}">{{_ "cms_button_edit"}}</a>
+						{{/if}}
 			            <!-- <button type="button" class="btn btn-box-tool" data-toggle="tooltip" title="Mark as read">
 			              <i class="fa fa-circle-o"></i></button>
 			            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -57,7 +59,7 @@
 			          <span class="pull-right text-muted">127 likes - 3 comments</span> -->
 			        </div>
 			        <div class="box-footer">
-			          
+          				<a class="btn btn-default" href="/cms/{{SiteId}}">{{_ "cms_button_back"}}</a>
 			        </div>
 			    </div>
 			    {{/with}}

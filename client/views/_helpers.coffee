@@ -14,6 +14,21 @@ CMS.helpers =
 		else if siteId
 			return db.cms_posts.find({site: siteId}, {sort: {postDate: -1}, limit: limit, skip: skip})
 	
+	PostsCount: ()->
+		siteId = Session.get("siteId")
+		tag = Session.get("siteTag")
+		siteCategoryId = Session.get("siteCategoryId")
+
+		if siteId and tag
+			return db.cms_posts.find({site: siteId, tags: tag}).count()
+		else if siteId and siteCategoryId
+			return db.cms_posts.find({site: siteId, category: siteCategoryId}).count()
+		else if siteId
+			return db.cms_posts.find({site: siteId}).count()
+		else
+			return 0
+	
+
 	Post: ()->
 		postId = FlowRouter.current().params.postId
 		if postId
@@ -93,3 +108,10 @@ CMS.helpers =
 	Markdown: (text)->
 		if text
 			return Spacebars.SafeString(Markdown(text))
+
+	PostCanEdit: ()->
+		postId = Session.get("postId")
+		if postId
+			post = db.cms_posts.findOne(postId)
+			if post?.created_by == Meteor.userId()
+				return true;

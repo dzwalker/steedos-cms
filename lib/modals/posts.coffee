@@ -21,6 +21,22 @@ db.cms_posts._simpleSchema = new SimpleSchema
 	# 		#type: "bootstrap-url",
 	# 		order: 10
 
+	category: 
+		type: [String],
+		optional: true,
+		autoform: 
+			type: "select",
+			defaultValue: ->
+				return Session.get("siteCategoryId");
+			options: ->
+				options = []
+				objs = db.cms_categories.find({}, {})
+				objs.forEach (obj) ->
+					options.push
+						label: obj.name,
+						value: obj._id
+				return options
+				
 	title: 
 		type: String,
 		optional: false,
@@ -65,22 +81,6 @@ db.cms_posts._simpleSchema = new SimpleSchema
 			# 		fileObj.metadata.site = Session.get("siteId")
 			# 		return fileObj
 
-	category: 
-		type: [String],
-		optional: true,
-		autoform: 
-			type: "select",
-			defaultValue: ->
-				return Session.get("siteCategoryId");
-			options: ->
-				options = []
-				objs = db.cms_categories.find({}, {})
-				objs.forEach (obj) ->
-					options.push
-						label: obj.name,
-						value: obj._id
-				return options
-				
 	organizations: 
 		type: [String],
 		optional: true,

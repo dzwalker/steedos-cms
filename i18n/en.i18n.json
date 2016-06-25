@@ -1,3 +1,11 @@
 {
-	"Steedos CMS": "CMS"
+	"Steedos CMS": "Posts",
+
+    "cms_home": "Home",
+    "cms_button_new": "New",
+    "cms_button_edit": "Edit Post",
+    "cms_button_admin": "Admin",
+    "cms_button_back": "Back",
+
+    "cms_posts_none": "No posts found."
 }

@@ -37,6 +37,7 @@ db.cms_categories._simpleSchema = new SimpleSchema
 		type: String,
 		optional: true,
 		autoform: 
+			omit: true
 			options:  () ->
 				categories = db.cms_categories.find().map (category) ->
 					return {

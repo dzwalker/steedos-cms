@@ -31,11 +31,11 @@ Meteor.methods
 			categoryIds.push(categoryId)
 			order += 10
 
-		TEMPLATE_POST_TITLE = "Welcome to Steedos Posts App"
-		TEMPLATE_POST_BODY = "You can read and share posts here, Space admins can manage categories."
+		TEMPLATE_POST_TITLE = "Welcome to Steedos Blogs"
+		TEMPLATE_POST_BODY = "You can read and share posts with your colleagues, Space admins can manage categories."
 		if owner?.locale == "zh-cn"
-			TEMPLATE_POST_TITLE = "欢迎使用信息管理应用"
-			TEMPLATE_POST_BODY = "您可以在这里快速分享各类信息，管理员可以维护知识分类。"
+			TEMPLATE_POST_TITLE = "欢迎使用博客应用"
+			TEMPLATE_POST_BODY = "您可以在这里与同事快速分享各类信息，管理员可以维护信息分类。"
 
 		db.cms_posts.insert
 			space: spaceId

@@ -4,10 +4,10 @@
     "cms_home": "Home",
     "cms_button_new": "New",
     "cms_button_edit": "Edit Post",
-    "cms_button_admin": "Admin",
+    "cms_button_admin": "Settings",
     "cms_button_back": "Back",
 
-    "cms_posts": "osts",
+    "cms_posts": "Posts",
     "cms_posts_title": "Title",
     "cms_posts_body": "Body",
     "cms_posts_attachments": "Attachments",
@@ -16,6 +16,9 @@
 
     "cms_categories": "Categories",
     "cms_categories_name": "Name",
+    "cms_categories_description": "Description",
+    "cms_categories_parent": "Parent",
+    "cms_categories_order": "Order No",
     "cms_categories_modified": "Modified",
 
     "cms_posts_none": "No posts found."

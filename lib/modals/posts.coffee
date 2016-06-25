@@ -192,6 +192,8 @@ db.cms_posts._simpleSchema = new SimpleSchema
 		type: Boolean,
 		optional: true,
 		defaultValue: false,
+		autoform:
+			omit: true
 		
 	# Whether the post is inactive. Inactive posts see their score recalculated less often
 	inactive: 

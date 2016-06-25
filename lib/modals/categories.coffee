@@ -54,12 +54,16 @@ db.cms_categories._simpleSchema = new SimpleSchema
 		type: Boolean,
 		optional: true,
 		defaultValue: true,
+		autoform:
+			omit: true
 
 	# show post list on website top menu
 	menu: 
 		type: Boolean,
 		optional: true,
 		defaultValue: true,
+		autoform:
+			omit: true
 
 	created: 
 		type: Date,

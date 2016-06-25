@@ -65,6 +65,8 @@ CMS.helpers =
 		return Session.get("siteCategoryId")
 
 	CategoryActive: (categoryId)->
+		if !categoryId and !Session.get("siteCategoryId")
+			return "active"
 		if Session.get("siteCategoryId") == categoryId
 			return "active"
 

@@ -7,5 +7,17 @@
     "cms_button_admin": "设置",
     "cms_button_back": "返回",
 
+    "cms_posts": "文章",
+    "cms_posts_title": "标题",
+    "cms_posts_body": "内容",
+    "cms_posts_attachments": "附件",
+    "cms_posts_category": "类别",
+    "cms_posts_modified": "修改时间",
+
+    "cms_categories": "类别",
+    "cms_categories_name": "名称",
+    "cms_categories_modified": "修改时间",
+
     "cms_posts_none": "没有文章."
+
 }

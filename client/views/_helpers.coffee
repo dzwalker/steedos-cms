@@ -34,6 +34,10 @@ CMS.helpers =
 		if postId
 			return db.cms_posts.findOne({_id: postId})
 
+	SpaceUserName: (userId)->
+		su = db.space_users.findOne({user: userId})
+		return su?.name
+
 	PostURL: (postId)->
 		siteId = Session.get("siteId")
 		if siteId

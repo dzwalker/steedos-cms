@@ -8,11 +8,11 @@ CMS.helpers =
 		siteCategoryId = Session.get("siteCategoryId")
 
 		if siteId and tag
-			return db.cms_posts.find({site: siteId, tags: tag}, {sort: {posted: -1}, limit: limit, skip: skip})
+			return db.cms_posts.find({site: siteId, tags: tag}, {sort: {postDate: -1}, limit: limit, skip: skip})
 		else if siteId and siteCategoryId
-			return db.cms_posts.find({site: siteId, category: siteCategoryId}, {sort: {posted: -1}, limit: limit, skip: skip})
+			return db.cms_posts.find({site: siteId, category: siteCategoryId}, {sort: {postDate: -1}, limit: limit, skip: skip})
 		else if siteId
-			return db.cms_posts.find({site: siteId}, {sort: {posted: -1}, limit: limit, skip: skip})
+			return db.cms_posts.find({site: siteId}, {sort: {postDate: -1}, limit: limit, skip: skip})
 	
 	Post: ()->
 		postId = FlowRouter.current().params.postId

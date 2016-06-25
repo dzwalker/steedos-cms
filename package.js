@@ -53,6 +53,7 @@ Package.onUse(function(api) {
     api.addFiles('lib/modals/sites.coffee');
     api.addFiles('lib/modals/tags.coffee');
     api.addFiles('lib/modals/themes.coffee');
+    api.addFiles('lib/admin.coffee');
 
     api.addFiles('client/views/_helpers.coffee', 'client');
     api.addFiles('client/views/home.html', 'client');

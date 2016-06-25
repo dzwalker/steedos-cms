@@ -11,4 +11,4 @@ Meteor.publish 'cms_posts', (siteId)->
     selector = 
         site: siteId
 
-    return db.cms_posts.find(selector, {sort: {created: -1}})
+    return db.cms_posts.find(selector, {sort: {postDate: -1}})

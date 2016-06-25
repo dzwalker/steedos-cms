@@ -47,6 +47,7 @@ db.cms_tags.adminConfig =
         {name: "modified"},
     ]
     selector: {owner: -1}
+    routerAdmin: "/cms/admin"
 
 
      

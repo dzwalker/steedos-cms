@@ -27,17 +27,16 @@ db.cms_sites._simpleSchema = new SimpleSchema
 		optional: true,
 		autoform: 
 			rows: 3
-
-	homepage_tags:
+	view_permissions:
 		type: [String],
-		optional: true,
-		autoform: 
-			type: 'tags'
-	menu_tags:
-		type: [String],
-		optional: true,
-		autoform: 
-			type: 'tags'
+		autoform:
+			type: "select-checkbox"
+			defaultValue: ["space_users"]
+			options: {
+				#owner: t("cms_site_permissions_owner")
+				space_users: t("cms_site_permissions_space_users")
+				anonymous: t("cms_site_permissions_anonymous")
+			}
 	owner: 
 		type: String,
 		autoform:
@@ -67,15 +66,6 @@ if Meteor.isClient
 	db.cms_sites._simpleSchema.i18n("cms_sites")
 
 db.cms_sites.attachSchema(db.cms_sites._simpleSchema)
-
-db.cms_sites.adminConfig = 
-	icon: "globe"
-	color: "blue"
-	tableColumns: [
-		{name: "name"},
-		{name: "modified"},
-	]
-	selector: {owner: -1}
 
 if Meteor.isServer
 	

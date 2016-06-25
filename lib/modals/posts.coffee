@@ -13,21 +13,6 @@ db.cms_posts._simpleSchema = new SimpleSchema
 			type: "hidden",
 			defaultValue: ->
 				return Session.get("siteId");
-	category: 
-		type: String,
-		optional: false,
-		autoform: 
-			type: "select",
-			defaultValue: ->
-				return Session.get("siteCategoryId");
-			options: ->
-				options = []
-				objs = db.cms_categories.find({}, {})
-				objs.forEach (obj) ->
-					options.push
-						label: obj.name,
-						value: obj._id
-				return options
 	# url: 
 	# 	type: String,
 	# 	optional: true,
@@ -80,10 +65,27 @@ db.cms_posts._simpleSchema = new SimpleSchema
 			# 		fileObj.metadata.site = Session.get("siteId")
 			# 		return fileObj
 
+	category: 
+		type: [String],
+		optional: true,
+		autoform: 
+			type: "select",
+			defaultValue: ->
+				return Session.get("siteCategoryId");
+			options: ->
+				options = []
+				objs = db.cms_categories.find({}, {})
+				objs.forEach (obj) ->
+					options.push
+						label: obj.name,
+						value: obj._id
+				return options
+				
 	organizations: 
 		type: [String],
 		optional: true,
 		autoform:
+			omit: true
 			type: "selectorg"
 			multiple: true
 
@@ -91,19 +93,22 @@ db.cms_posts._simpleSchema = new SimpleSchema
 		type: [String],
 		optional: true,
 		autoform:
+			omit: true
 			type: "selectuser"
 			multiple: true
 			
 	tags:
 		type: [String],
 		optional: true,
-		autoform: 
+		autoform:
+			omit: true
 			type: 'tags'
 		
 	postDate: 
 		type: Date,
 		optional: true,
 		autoform: 
+			omit: true
 			type: "bootstrap-datetimepicker"
 			
 	viewCount: 
@@ -199,18 +204,18 @@ db.cms_posts._simpleSchema = new SimpleSchema
 		autoform: 
 			omit: true
 
-	# The post author's name
-	author_name: 
-		type: String,
-		optional: true
-		autoform: 
-			omit: true
-	# The post author's `_id`. 
-	author: 
-		type: String,
-		optional: true,
-		autoform: 
-			omit: true
+	# # The post author's name
+	# author_name: 
+	# 	type: String,
+	# 	optional: true
+	# 	autoform: 
+	# 		omit: true
+	# # The post author's `_id`. 
+	# author: 
+	# 	type: String,
+	# 	optional: true,
+	# 	autoform: 
+	# 		omit: true
 
 	created: 
 		type: Date,
@@ -238,17 +243,6 @@ if Meteor.isClient
 db.cms_posts.attachSchema(db.cms_posts._simpleSchema)
 
 
-db.cms_posts.adminConfig = 
-	icon: "globe"
-	color: "blue"
-	tableColumns: [
-		{name: "title"},
-		{name: "author_name"},
-		{name: "modified"},
-	]
-	selector: {owner: -1}
-
-
 
 if Meteor.isServer
 	
@@ -262,14 +256,8 @@ if Meteor.isServer
 		if !userId
 			throw new Meteor.Error(400, t("cms_posts_error.login_required"));
 		
-		if !doc.author
-			doc.author = userId
-		if !doc.author_name
-			user = db.users.findOne(userId)
-			doc.author_name = user.name
-
-		if !doc.posted
-			doc.posted = new Date()
+		if !doc.postDate
+			doc.postDate = new Date()
 
 		# 暂时默认为已核准
 		doc.status = db.cms_posts.config.STATUS_APPROVED

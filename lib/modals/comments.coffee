@@ -26,7 +26,7 @@ db.cms_comments._simpleSchema = new SimpleSchema
 		type: Date,
 		optional: true
 
-	posted: 
+	postDate: 
 		type: Date,
 		optional: true
 

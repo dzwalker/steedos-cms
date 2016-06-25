@@ -87,6 +87,7 @@ db.cms_categories.adminConfig =
 		{name: "modified"},
 	]
 	selector: {owner: -1}
+	routerAdmin: "/cms/admin"
 
 
 	 

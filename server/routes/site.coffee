@@ -49,9 +49,9 @@ Template.registerHelper 'Posts', (categoryId, limit, skip)->
     skip = 0
     siteId = Template.instance().data.params.siteId
     if siteId and categoryId
-        return db.cms_posts.find({site: siteId, category: categoryId}, {sort: {posted: -1}, limit: limit, skip: skip})
+        return db.cms_posts.find({site: siteId, category: categoryId}, {sort: {postDate: -1}, limit: limit, skip: skip})
     else if siteId
-        return db.cms_posts.find({site: siteId}, {sort: {posted: -1}, limit: limit, skip: skip})
+        return db.cms_posts.find({site: siteId}, {sort: {postDate: -1}, limit: limit, skip: skip})
 
 Template.registerHelper 'Post', ->
     postId = Template.instance().data.params.postId

@@ -1,10 +1,17 @@
 FlowRouter.route '/cms',
 	action: (params, queryParams)->
-		Session.set("postId", null)
-		Session.set("tag", null)
-		Session.set("siteId", null)
-		BlazeLayout.render 'masterLayout',
-			main: "cms_home"
+		if Session.get("siteId") and db.cms_sites.findOne(Session.get("siteId"))
+			FlowRouter.go "/cms/" + Session.get("siteId")
+		else
+			BlazeLayout.render 'masterLayout',
+				main: "cms_home"
+
+FlowRouter.route '/cms/admin',
+	action: (params, queryParams)->
+		if Session.get("siteId")
+			FlowRouter.go "/cms/" + Session.get("siteId") + "/admin"
+		else
+			FlowRouter.go "/cms/"
 
 FlowRouter.route '/cms/:siteId/admin',
 	action: (params, queryParams)->
@@ -23,6 +30,7 @@ FlowRouter.route '/cms/:siteId',
 FlowRouter.route '/cms/:siteId/p/:postId',
 	action: (params, queryParams)->
 		Session.set("siteId", params.siteId)
+		Session.set("postId", params.postId)
 		BlazeLayout.render 'masterLayout',
 			main: "cms_site_post"
 
@@ -51,5 +59,6 @@ FlowRouter.route '/cms/:siteId/c/:siteCategoryId/p/:postId',
 	action: (params, queryParams)->
 		Session.set("siteId", params.siteId)
 		Session.set("siteCategoryId", params.siteCategoryId)
+		Session.set("postId", params.postId)
 		BlazeLayout.render 'masterLayout',
 			main: "cms_site_post"

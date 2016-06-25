@@ -128,7 +128,7 @@
 										{{#each Posts _id 5}}
 										<a class="list_item js_post" href="/site/{{SiteId}}/p/{{_id}}">
 											<div class="cover">
-												<img class="img js_img" src="/api/files/sites/{{image}}" alt="">
+												<img class="img js_img" src="/api/files/posts/{{image}}" alt="">
 											</div>
 											<div class="cont">
 												<h2 class="title js_title">{{title}}</h2>
@@ -163,7 +163,7 @@
 										{{#each Posts Category._id 20}}
 										<a class="list_item js_post" href="/site/{{SiteId}}/p/{{_id}}">
 											<div class="cover">
-												<img class="img js_img" src="/api/files/sites/{{image}}" alt="">
+												<img class="img js_img" src="/api/files/posts/{{image}}" alt="">
 											</div>
 											<div class="cont">
 												<h2 class="title js_title">{{title}}</h2>
@@ -193,11 +193,11 @@
 								  <p>{{postDate}}</p>
 								</div>
 								<div class="box-body no-padding weixin">
-									<img class="img js_img" src="/api/files/sites/{{Post.image}}" alt="">
+									<img class="img js_img" src="/api/files/posts/{{Post.image}}" alt="">
 									<p>{{Markdown Post.body}}</p>
 									<ul>
 									{{#each Attachments}}
-										<li><a href="/api/files/sites/{{_id}}" alt="" target="_blank">{{original.name}}</a></li>
+										<li><a href="/api/files/posts/{{_id}}" alt="" target="_blank">{{original.name}}</a></li>
 									{{/each}}
 									</ul>
 

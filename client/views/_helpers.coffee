@@ -54,12 +54,25 @@ CMS.helpers =
 		if this.body
 			return this.body.substring(0, 200)
 
-	Attachments: ()->
+	PostImage: (postId)->
+		if postId
+			post = db.cms_posts.findOne({_id: postId})
+			if post?.images?.length>0
+				return post.images[0]
+
+	PostImages: ()->
+		postId = FlowRouter.current().params.postId
+		if postId
+			post = db.cms_posts.findOne({_id: postId})
+			if post?.images?.length>0
+				return cfs.posts.find({_id: {$in: post.images}}).fetch()
+
+	PostAttachments: ()->
 		postId = FlowRouter.current().params.postId
 		if postId
 			post = db.cms_posts.findOne({_id: postId})
 			if post and post.attachments
-				return cfs.sites.find({_id: {$in: post.attachments}}).fetch()
+				return cfs.posts.find({_id: {$in: post.attachments}}).fetch()
 
 	CategoryId: ()->
 		return Session.get("siteCategoryId")

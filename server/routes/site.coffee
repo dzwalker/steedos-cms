@@ -64,7 +64,7 @@ Template.registerHelper 'Attachments', ()->
     if postId
         post = db.cms_posts.findOne({_id: postId})
         if post and post.attachments
-            return cfs.sites.find({_id: {$in: post.attachments}}).fetch()
+            return cfs.posts.find({_id: {$in: post.attachments}}).fetch()
 
 Template.registerHelper 'SiteId', ->
     siteId = Template.instance().data.params.siteId

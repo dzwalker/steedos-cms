@@ -1,8 +1,8 @@
-cfs.sites = new FS.Collection("sites",
-  stores: [new FS.Store.FileSystem("sites")]
+cfs.posts = new FS.Collection("posts",
+  stores: [new FS.Store.FileSystem("posts")]
 )
 
-cfs.sites.allow
+cfs.posts.allow
   insert: (userId, doc) ->
     true
   update: (userId, doc) ->

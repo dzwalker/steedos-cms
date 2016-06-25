@@ -49,14 +49,20 @@ db.cms_posts._simpleSchema = new SimpleSchema
 	# 	optional: true
 	# 	autoform:
 	# 		omit: true
-		
+	
+	image:
+		type: [String]
+		optional: true
+		autoform:
+			omit: true
+
 	attachments:
 		type: [String]
 		optional: true
 	"attachments.$":
 		autoform:
 			type: 'fileUpload'
-			collection: 'sites'
+			collection: 'posts'
 			accept: 'image/*'
 			# triggers: 
 			# 	onBeforeInsert: (fileObj) ->
@@ -268,8 +274,26 @@ if Meteor.isServer
 		if user
 			doc.author_name = user.name
 
+		# pick images from attachments 
+		if doc and doc.attachments
+			doc.attachments = _.compact(doc.attachments)
+			atts = cfs.posts.find({_id: {$in: doc.attachments}}).fetch()
+			doc.images = []
+			_.each atts, (att)->
+				if att.isImage()
+					doc.images.push att._id
+
+
 	db.cms_posts.after.insert (userId, doc) ->
-			
+		# update cfs meta
+		if doc and doc.attachments
+			cfs.posts.update {_id: {$in: doc.attachments}}, {
+				$set: 
+					site: doc.site
+					post: doc._id
+			}, {multi: true}
+			cfs.posts.remove {post: doc._id, _id: {$not: {$in: doc.attachments}}}
+	
 
 	db.cms_posts.before.update (userId, doc, fieldNames, modifier, options) ->
 		modifier.$set = modifier.$set || {};
@@ -277,8 +301,25 @@ if Meteor.isServer
 		modifier.$set.modified_by = userId;
 		modifier.$set.modified = new Date();
 
+		# pick images from attachments 
+		if modifier.$set and modifier.$set.attachments
+			modifier.$set.attachments = _.compact(modifier.$set.attachments)
+			atts = cfs.posts.find({_id: {$in: modifier.$set.attachments}}).fetch()
+			modifier.$set.images = []
+			_.each atts, (att)->
+				if att.isImage()
+					modifier.$set.images.push att._id
+
 
 	db.cms_posts.after.update (userId, doc, fieldNames, modifier, options) ->
 		self = this
 		modifier.$set = modifier.$set || {}
-		
+
+		# update cfs meta
+		if modifier.$set and modifier.$set.attachments
+			cfs.posts.update {_id: {$in: modifier.$set.attachments}}, {
+				$set: 
+					site: doc.site
+					post: doc._id
+			}, {multi: true}
+			cfs.posts.remove {post: doc._id, _id: {$not: {$in: modifier.$set.attachments}}}

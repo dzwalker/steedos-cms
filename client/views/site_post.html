@@ -16,7 +16,7 @@
 		</div>
 	</div>
 
-	<div class="content cms home">
+	<div class="content cms post">
 
 		<div class="row">
 
@@ -40,24 +40,31 @@
 			          </div>
 			        </div>
 			        <div class="box-body">
-						{{#if Image}}
-							<img class="img-responsive pad" src="/api/files/sites/{{image}}" alt="Photo">
-						{{/if}}  
+						<!-- {{#if PostImage _id}}
+			                <img class="img-responsive pad" src="/api/files/posts/{{PostImage _id}}" alt="Photo">
+			            {{/if}} -->  
 
 						{{{Markdown body}}}
 						
-						<ul>
-							{{#each Attachments}}
-								<li><a href="/api/files/sites/{{_id}}" alt="" target="_blank">{{original.name}}</a></li>
-							{{/each}}
-						</ul>
+						<div class="row">
+						{{#each PostImages}}
+							<a href="{{absoluteUrl}}api/files/posts/{{_id}}/{{original.name}}" class="swipebox" title="{{original.name}}">
+								<img class="img-responsive pad" src="{{absoluteUrl}}api/files/posts/{{_id}}/{{original.name}}" alt="{{original.name}}">
+							</a>
+						{{/each}}
+						</div>
 			          <!-- <button type="button" class="btn btn-default btn-xs"><i class="fa fa-share"></i> Share</button>
 			          <button type="button" class="btn btn-default btn-xs"><i class="fa fa-thumbs-o-up"></i> Like</button>
 			          <span class="pull-right text-muted">127 likes - 3 comments</span> -->
 			        </div>
-			        <!-- <div class="box-footer">
-          				<a class="btn btn-default" href="/cms/{{SiteId}}">{{_ "cms_button_back"}}</a>
-			        </div> -->
+			        <div class="box-footer">
+          				<ul>
+						{{#each PostAttachments}}
+							<li><a href="#" class="post-attachment" title="{{original.name}}">{{original.name}}
+							</a></li>
+						{{/each}}
+          				</ul>
+			        </div>
 			    </div>
 			    {{/with}}
 			</div>

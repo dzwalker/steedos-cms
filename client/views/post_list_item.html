@@ -17,11 +17,16 @@
               </div>
             </div>
             <div class="box-body">
-              {{#if image}}
-              <img class="img-responsive pad" src="/api/files/sites/{{image}}" alt="Photo">
-              {{/if}}  
 
               {{{PostSummary}}}
+
+              <div class="margin-top">
+                  {{#each images}}
+                    <a href="{{absoluteUrl}}api/files/posts/{{this}}" class="swipebox" title="">
+                      <img class="post-list-image" src="{{absoluteUrl}}api/files/posts/{{this}}" alt="Photo">
+                    </a>
+                  {{/each}} 
+              </div>
               
               <!-- <button type="button" class="btn btn-default btn-xs"><i class="fa fa-share"></i> Share</button>
               <button type="button" class="btn btn-default btn-xs"><i class="fa fa-thumbs-o-up"></i> Like</button>

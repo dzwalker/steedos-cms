@@ -46,7 +46,7 @@ Package.onUse(function(api) {
     
     api.addFiles('lib/core.coffee');
     api.addFiles('lib/modals/categories.coffee');
-    api.addFiles('lib/modals/cfs_sites.coffee');
+    api.addFiles('lib/modals/cfs_posts.coffee');
     api.addFiles('lib/modals/comments.coffee');
     api.addFiles('lib/modals/pages.coffee');
     api.addFiles('lib/modals/posts.coffee');
@@ -65,7 +65,7 @@ Package.onUse(function(api) {
     api.addFiles('client/views/site_category.html', 'client');
     api.addFiles('client/views/site_category.coffee', 'client');
     api.addFiles('client/views/site_home.html', 'client');
-    api.addFiles('client/views/site_home.less', 'client');
+    api.addFiles('client/views/site.less', 'client');
     api.addFiles('client/views/site_home.coffee', 'client');
     api.addFiles('client/views/site_menu.html', 'client');
     api.addFiles('client/views/site_menu.coffee', 'client');
@@ -80,7 +80,7 @@ Package.onUse(function(api) {
     api.addFiles('server/methods/cms_init.coffee', 'server');
     api.addFiles('server/methods/cms_site_build.coffee', 'server');
 
-    api.addFiles('server/publications/cfs_sites.coffee', 'server');
+    api.addFiles('server/publications/cfs_posts.coffee', 'server');
     api.addFiles('server/publications/cms_categories.coffee', 'server');
     api.addFiles('server/publications/cms_posts.coffee', 'server');
     api.addFiles('server/publications/cms_sites.coffee', 'server');

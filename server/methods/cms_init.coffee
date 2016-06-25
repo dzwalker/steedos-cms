@@ -31,7 +31,7 @@ Meteor.methods
 			categoryIds.push(categoryId)
 			order += 10
 
-		TEMPLATE_POST_TITLE = "Welcome to Steedos Blogs"
+		TEMPLATE_POST_TITLE = "Welcome to Steedos Blog"
 		TEMPLATE_POST_BODY = "You can read and share posts with your colleagues, Space admins can manage categories."
 		if owner?.locale == "zh-cn"
 			TEMPLATE_POST_TITLE = "欢迎使用博客应用"

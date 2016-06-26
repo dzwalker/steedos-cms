@@ -30,9 +30,11 @@
 			                <img class="img-responsive pad" src="/api/files/posts/{{PostImage _id}}" alt="Photo">
 			            {{/if}} -->  
 
-						{{{Markdown body}}}
+						<div class="post-body col-sm-12">
+							{{{Markdown body}}}
+						</div>
 						
-						<div class="row">
+						<div class="col-sm-12">
 						{{#each PostImages}}
 							<a href="{{absoluteUrl}}api/files/posts/{{_id}}/{{original.name}}" class="swipebox" title="{{original.name}}">
 								<img class="img-responsive pad" src="{{absoluteUrl}}api/files/posts/{{_id}}/{{original.name}}" alt="{{original.name}}">

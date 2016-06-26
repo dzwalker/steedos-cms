@@ -184,7 +184,7 @@
 				<div class="collapse navbar-collapse pull-left" id="navbar-collapse">
 				  <ul class="nav navbar-nav">
 					
-					<li><a href="/site/{{SiteId}}"><i class="ion ion-ios-home-outline"></i></a></li>
+					<li><a href="/site/{{SiteId}}" style="height: 50px;font-size: 130%;"><i class="ion ion-ios-home-outline"></i></a></li>
 					{{#each SubCategories "root"}}
 						<li class="{{CategoryActive _id}}"><a href="/site/{{SiteId}}/c/{{_id}}">{{name}}</a></li>
 					{{/each}}
@@ -328,11 +328,11 @@
 						</div>
 						<div class="box-body">
 							
-							<div class="post-body">
+							<div class="post-body col-sm-12">
 								<p>{{Markdown Post.body}}</p>
 							</div>
 
-							<div class="row">
+							<div class="col-sm-12">
 								{{#each Post.images}}
 									<a href="/api/files/posts/{{this}}" class="swipebox" title="">
 									  <img class="post-list-image" src="/api/files/posts/{{this}}" alt="Photo">

@@ -72,13 +72,13 @@ db.cms_sites._simpleSchema = new SimpleSchema
 		optional: true,
 		autoform: 
 			rows: 10
-			readonly: ()->
+			type: ()->
 				spaceId = Session.get("spaceId")
 				if spaceId
 					space = db.spaces.findOne(spaceId)
 					if space?.is_paid
-						return false
-				return true
+						return "textarea"
+				return "hidden"
 	created:
 		type: Date,
 		optional: true

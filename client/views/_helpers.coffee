@@ -110,7 +110,10 @@ CMS.helpers =
 			return db.cms_categories.find({parent: null})
 			
 	SubCategoriesCount: (parent)->
-		return db.cms_categories.find({parent: parent}).count()
+		if parent
+			return db.cms_categories.find({parent: parent}).count()
+		else
+			return db.cms_categories.find({parent: null}).count()
 
 	SiteId: ->
 		siteId = Session.get("siteId")

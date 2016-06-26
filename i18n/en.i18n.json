@@ -2,10 +2,20 @@
 	"Steedos CMS": "Sites",
 
     "cms_home": "Home",
+    "cms_label_dashboard": "Site Dashboard",
     "cms_button_new": "New",
     "cms_button_edit": "Edit Post",
     "cms_button_admin": "Settings",
     "cms_button_back": "Back",
+
+    "cms_sites": "Sites",
+    "cms_sites_name": "Name",
+    "cms_sites_description": "Description",
+    "cms_sites_anonymous": "Anonymous View",
+    "cms_sites_cover": "Cover Image",
+    "cms_sites_avatar": "Avatar Image",
+    "cms_sites_order": "Order No",
+    "cms_sites_layout": "Customize Layout (Only Paid Site)",
 
     "cms_posts": "Posts",
     "cms_posts_title": "Title",

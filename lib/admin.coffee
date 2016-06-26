@@ -9,6 +9,16 @@ db.cms_sites.adminConfig =
     routerAdmin: "/cms"
     disableAdd: true
 
+db.cms_categories.adminConfig = 
+    icon: "ion ion-ios-albums-outline"
+    color: "blue"
+    tableColumns: [
+        {name: "name"},
+        {name: "modified"},
+    ]
+    selector: {owner: -1}
+    routerAdmin: "/cms"
+
 db.cms_posts.adminConfig = 
     icon: "globe"
     color: "blue"
@@ -41,6 +51,8 @@ if Meteor.isClient
                 AdminTables["cms_sites"]?.selector = {owner: Meteor.userId(), space: Session.get("spaceId")}
                 if Session.get("siteId")
                     db.cms_sites.adminConfig.routerAdmin = "/cms/" + Session.get("siteId")
+                    db.cms_categories.adminConfig.routerAdmin = "/cms/" + Session.get("siteId")
+                    db.cms_posts.adminConfig.routerAdmin = "/cms/" + Session.get("siteId")
                     AdminTables["cms_posts"]?.selector = {site: Session.get("siteId"), created_by: Meteor.userId()}
                     AdminTables["cms_categories"]?.selector = {site: Session.get("siteId")}
                     AdminTables["cms_tags"]?.selector = {site: Session.get("siteId")}

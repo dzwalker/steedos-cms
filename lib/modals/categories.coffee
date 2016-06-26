@@ -83,16 +83,3 @@ if Meteor.isClient
 	db.cms_categories._simpleSchema.i18n("cms_categories")
 
 db.cms_categories.attachSchema(db.cms_categories._simpleSchema)
-
-db.cms_categories.adminConfig = 
-	icon: "ion ion-ios-albums-outline"
-	color: "blue"
-	tableColumns: [
-		{name: "name"},
-		{name: "modified"},
-	]
-	selector: {owner: -1}
-	routerAdmin: "/cms/admin"
-
-
-	 

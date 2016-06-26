@@ -1,14 +1,11 @@
 <template name="cms_site_menu">
 
+    <a href="/admin/new/cms_posts" class="btn btn-primary btn-block margin-bottom">{{_ "cms_button_new"}}</a>
+
+    {{#if SubCategoriesCount ""}}
     <div class="box box-solid">
-      <!-- <div class="box-header with-border">
-          <h3 class="box-title">{{_ "cms_categories"}}</h3>
-        <div class="box-tools">
-        </div>
-      </div> -->
       <div class="box-body no-padding">
         <ul class="nav nav-pills nav-stacked">
-          
           <li class="{{CategoryActive}}"><a href="/cms/{{SiteId}}/"><i class="ion ion-ios-home-outline"></i>{{_ "cms_home"}}</a></li>
 
           {{#if SubCategoriesCount CategoryId}}
@@ -29,11 +26,19 @@
         </ul>
       </div>
     </div>
+    {{/if}}
     
     <div class="box box-solid hidden-xs">
+      <div class="box-header with-border">
+          <h3 class="box-title">{{_ "cms_button_admin"}}</h3>
+        <div class="box-tools">
+        </div>
+      </div>
       <div class="box-body no-padding">
         <ul class="nav nav-pills nav-stacked">
-          <li><a href="/cms/{{SiteId}}/admin"><i class="ion ion-ios-gear-outline"></i> {{_ "cms_button_admin"}}</a></li>
+          <li><a class="weui_cell" href="/admin/edit/cms_sites/{{session 'siteId'}}"><i class="ion ion-ios-book-outline"></i> {{_ "cms_sites"}}</a></li>
+          <li><a class="weui_cell" href="/admin/view/cms_categories"><i class="ion ion-ios-folder-outline"></i> {{_ "cms_categories"}}</a></li>
+          <li><a class="weui_cell" href="/admin/view/cms_posts"><i class="ion ion-ios-paper-outline"></i> {{_ "cms_posts"}}</a></li>
         </ul>
       </div>
     </div>

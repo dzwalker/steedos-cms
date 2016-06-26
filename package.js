@@ -59,6 +59,9 @@ Package.onUse(function(api) {
     api.addFiles('client/views/home.html', 'client');
     api.addFiles('client/views/home.coffee', 'client');
     api.addFiles('client/views/home.less', 'client');
+    api.addFiles('client/views/site_header.html', 'client');
+    api.addFiles('client/views/site_header.coffee', 'client');
+    api.addFiles('client/views/site_header.less', 'client');
     api.addFiles('client/views/post_list_item.html', 'client');
     api.addFiles('client/views/post_list_item.coffee', 'client');
     api.addFiles('client/views/site_admin.html', 'client');

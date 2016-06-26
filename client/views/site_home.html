@@ -1,20 +1,6 @@
 <template name="cms_site_home">
 
-	<div class="navigation-bar">
-
-
-		<button type="button" class="btn btn-default" data-toggle="offcanvas">
-			<i class="fa fa-bars"></i>
-		</button>
-
-		<span class="navigation-title dropdown">
-			{{Site.name}}
-		</span>
-		<div class="pull-right">
-			<a href="/admin/new/cms_posts" class="btn btn-primary">{{_ "cms_button_new"}}</a>
-			<!-- <a class="btn btn-default" href="/site/{{SiteId}}" target="_blank"><i class="ion ion-ios-world-outline"></i></a> -->
-		</div>
-	</div>
+	{{> cms_site_header}}
 
 	<div class="content cms home">
 

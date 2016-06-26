@@ -1,20 +1,7 @@
 <template name="cms_site_category">
 
-	<div class="navigation-bar">
-
-		<button type="button" class="btn btn-default" data-toggle="offcanvas">
-			<i class="fa fa-bars"></i>
-		</button>
-
-		<span class="navigation-title dropdown">
-			{{Site.name}}
-		</span>
-		<div class="pull-right">
-			<a href="/admin/new/cms_posts" class="btn btn-primary">{{_ "cms_button_new"}}</a>
-			<!-- <a class="btn btn-default" href="/site/{{SiteId}}" target="_blank"><i class="ion ion-ios-world-outline"></i></a> -->
-		</div>
-	</div>
-
+	{{> cms_site_header}}
+	
 	<div class="content cms home">
 
 		<div class="row">
@@ -24,22 +11,16 @@
 			</div>
 			<div class="col-sm-8">
 
-				<div class="box box-primary">
-		            <div class="box-header with-border">
-		              <h3 class="box-title"><i class="ion ion-ios-folder-outline"></i>&nbsp;&nbsp;{{Category.name}}</h3>
-		            </div>
-		            {{#if Category.description}}
-			            <div class="box-body">
-			            	{{Category.description}}
-			            </div>
-		            {{/if}}
-		        </div>
-
 				{{#if PostsCount}}
 					{{#each Posts 20}}
 						{{> cms_post_list_item}}
 					{{/each}}
 				{{else}}
+					<div class="box box-widget">
+			            <div class="box-body">
+			              {{_ "cms_posts_none"}}
+			            </div>
+			        </div>
 				{{/if}}
 			</div>
 

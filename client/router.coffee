@@ -1,17 +1,7 @@
 FlowRouter.route '/cms',
 	action: (params, queryParams)->
-		if Session.get("siteId") and db.cms_sites.findOne(Session.get("siteId"))
-			FlowRouter.go "/cms/" + Session.get("siteId")
-		else
-			BlazeLayout.render 'masterLayout',
+		BlazeLayout.render 'masterLayout',
 				main: "cms_home"
-
-FlowRouter.route '/cms/admin',
-	action: (params, queryParams)->
-		if Session.get("siteId")
-			FlowRouter.go "/cms/" + Session.get("siteId") + "/admin"
-		else
-			FlowRouter.go "/cms/"
 
 FlowRouter.route '/cms/:siteId/admin',
 	action: (params, queryParams)->

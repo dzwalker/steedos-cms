@@ -58,6 +58,7 @@ Package.onUse(function(api) {
     api.addFiles('client/views/_helpers.coffee', 'client');
     api.addFiles('client/views/home.html', 'client');
     api.addFiles('client/views/home.coffee', 'client');
+    api.addFiles('client/views/home.less', 'client');
     api.addFiles('client/views/post_list_item.html', 'client');
     api.addFiles('client/views/post_list_item.coffee', 'client');
     api.addFiles('client/views/site_admin.html', 'client');
@@ -88,6 +89,7 @@ Package.onUse(function(api) {
     api.addFiles('server/publications/cms_themes.coffee', 'server');
 
     api.addFiles('server/routes/site.coffee', 'server');
+    api.addFiles('server/routes/avatar.coffee', 'server');
     api.addAssets('themes/default.html', 'server');
 
     // EXPORT

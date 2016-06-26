@@ -9,10 +9,15 @@ Meteor.methods
 		if site
 			return false;
 
+		owner = db.users.findOne(space.owner)
+		siteName = space.name + " Blog"
+		if owner?.locale == "zh-cn"
+			siteName = space.name + " 博客"
 		siteId = db.cms_sites.insert
 			space: spaceId
-			name: space.name
+			name: siteName
 			owner: space.owner
+			admins: [space.owner]
 
 		owner = db.users.findOne(space.owner)
 

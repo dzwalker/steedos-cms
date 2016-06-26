@@ -22,8 +22,7 @@
 
 				<div class="weui_cells weui_cells_access">
 				{{#if isSpaceAdmin}}
-					{{#if isPaid "cms"}}
-					<a class="weui_cell navigation" href="/admin/view/cms_sites">
+					<a class="weui_cell" href="/admin/edit/cms_sites/{{session 'siteId'}}">
 						<div class="weui_cell_hd"><i class="ion ion-archive"></i></div>
 						<div class="weui_cell_bd weui_cell_primary">
 						  &nbsp;{{_ "cms_sites"}}
@@ -31,7 +30,6 @@
 						<div class="weui_cell_ft">
 						</div>
 					</a>
-					{{/if}}
 					<a class="weui_cell navigation" href="/admin/view/cms_categories">
 						<div class="weui_cell_hd"><i class="ion ion-ios-folder-outline"></i></div>
 						<div class="weui_cell_bd weui_cell_primary">

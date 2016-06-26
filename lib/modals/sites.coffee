@@ -43,12 +43,26 @@ db.cms_sites._simpleSchema = new SimpleSchema
 			type: "selectuser"
 			defaultValue: ->
 				return Meteor.userId()
+	admins: 
+		type: [String],
+		autoform:
+			type: "selectuser"
+			multiple: true
+			defaultValue: ->
+				return [Meteor.userId()]
 
 	layout: 
 		type: String,
 		optional: true,
 		autoform: 
 			rows: 10
+			omit: ()->
+				spaceId = Session.get("spaceId")
+				if spaceId
+					space = db.spaces.findOne(spaceId)
+					if space.is_paid
+						return false
+				return true
 	created:
 		type: Date,
 		optional: true

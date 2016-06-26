@@ -72,7 +72,7 @@ db.cms_posts._simpleSchema = new SimpleSchema
 			# 		return fileObj
 
 	category: 
-		type: [String],
+		type: String,
 		optional: true,
 		autoform: 
 			type: ()->

@@ -4,12 +4,13 @@
 	<title>{{Title}}{{#if Post}} - {{Post.title}}{{/if}}{{#if Tag}} - {{Tag}}{{/if}}</title>
 	<meta name="description" content="{{site.metaDescription}}">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-	<script type="text/javascript" src="http://oss.steedos.com/libs/jquery/2.2.0/jquery.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="http://oss.steedos.com/libs/bootstrap/3.3.6/css/bootstrap.min.css">
-	<script type="text/javascript" src="http://oss.steedos.com/libs/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="http://oss.steedos.com/libs/admin-lte/2.3.2/css/AdminLTE.min.css">
-	<link rel="stylesheet" type="text/css" href="http://oss.steedos.com/libs/admin-lte/2.3.2/css/skins/_all-skins.min.css">
-	<script type="text/javascript" src="http://oss.steedos.com/libs/admin-lte/2.3.2/js/app.min.js"></script>
+	<script type="text/javascript" src="https://www.steedos.com/system/libs/jquery/2.2.0/jquery.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="https://www.steedos.com/system/libs/bootstrap/3.3.6/css/bootstrap.min.css">
+	<script type="text/javascript" src="https://www.steedos.com/system/libs/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="https://www.steedos.com/system/libs/admin-lte/2.3.2/css/AdminLTE.min.css">
+	<link rel="stylesheet" type="text/css" href="https://www.steedos.com/system/libs/admin-lte/2.3.2/css/skins/_all-skins.min.css">
+	<script type="text/javascript" src="https://www.steedos.com/system/libs/admin-lte/2.3.2/js/app.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="https://www.steedos.com/system/libs/ionicons/css/ionicons.min.css">
 	<style>
 		.article_list * {
 		  margin: 0;
@@ -79,18 +80,102 @@
 		  transform: scaleY(0.5);
 		  left: 10px;
 		}
+		.post-list{
+			max-width: 1000px;
+			.post-summary {
+				overflow: hidden;
+				text-overflow: ellipsis;
+				height: 60px;
+			}
+		}
+
+		.post{
+			max-width: 1000px;
+		}
+
+		.site {
+			background: transparent;
+			box-shadow: 0 0 0;
+		}
+		.site .site-header {
+		  padding: 10px;
+		  height: 200px;
+		  background-size: cover;
+		  background-position: center center;
+		}
+		.site .site-username {
+		  margin-top: 0;
+		  margin-bottom: 5px;
+		  font-size: 16px;
+		  font-weight: 300;
+		  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+		}
+		.site .site-name {
+		  color: black;
+		  margin-top: 10px;
+		  margin-bottom: 5px;
+		  font-size: 24px;
+		  font-weight: 300;
+		  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+		  text-align: center
+		}
+		.site .site-desc {
+		  margin-top: 0;
+		  color: gray;
+		}
+		.site .site-image {
+		  position: absolute;
+		  top: 145px;
+		  left: 50%;
+		  margin-left: -45px;
+		}
+		.site .site-image > img {
+		  width: 90px;
+		  height: 90px;
+		  border: 3px solid #ecf0f5;
+		}
+		.site .box-footer {
+		  padding-top: 40px;
+		  text-align: center;
+		  background: transparent;
+		}
+
+		.site .main-header {
+			position: absolute;
+			max-height: 100px;
+			width: 100%;
+			background: transparent;
+		}
+		.site .main-header .navbar {
+			background-color: rgba(0, 0, 0, 0.5);
+		}
+
+		.site .main-header .navbar .nav>li>a:hover, .skin-red .main-header .navbar .nav>li>a:active, .skin-red .main-header .navbar .nav>li>a:focus, .skin-red .main-header .navbar .nav .open>a, .skin-red .main-header .navbar .nav .open>a:hover, .skin-red .main-header .navbar .nav .open>a:focus, .skin-red .main-header .navbar .nav>.active>a {
+			background: rgba(0,0,0,0.5);
+		}
+
+		.swipebox {
+			padding-right: 10px;
+			padding-top: 10px;
+			box-sizing: border-box;
+			float: left;
+			display: block;   
+		}
+		.swipebox img {
+			max-height: 200px;
+			max-width: 100%;
+		}
 	</style>
 </head>
 <body class="steedos site layout-top-nav skin-red">
 
 	<div class="wrapper">
-		
+		{{#if SubCategoriesCount "root"}}
 		<header class="main-header">
 			<nav class="navbar navbar-static-top">
 				<div class="navbar-header">
-				  <a href="/site/{{SiteId}}/" class="navbar-brand"><b>{{Site.name}}</b></a>
 				  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
-					<i class="fa fa-bars"></i>
+					<i class="ion ion-navicon"></i>
 				  </button>
 				</div>
 
@@ -107,76 +192,124 @@
 				</div>
 			</nav>
 		</header>
+		{{/if}}
 
 		<div class="content-wrapper" style="min-height: 800px;">
-			
-			<div class="content">
+			 
+			<a href="/site/{{SiteId}}/">
+				<div class="box box-widget site">
+					<div class="site-header bg-aqua-active" style="background-image: url('/api/files/avatars/{{Site.cover}}') ">
+						<div class="pull-right">
+						</div>
+					</div>
+					<div class="site-image">
+					  <img class="img-circle" src="/avatar/cms_sites/{{Site._id}}" alt="{{name}}">
+					</div>
+					<div class="box-footer">
+						<h3 class="site-name">{{Site.name}}</h3>
+						<h5 class="site-desc">{{Site.description}}</h5>
+						<!-- <div class="site-categories">
+							&nbsp;&nbsp;
+							{{#each SubCategories "root"}}
+								<span class="{{CategoryActive _id}}"><a href="/site/{{SiteId}}/c/{{_id}}">{{name}}</a></span> &nbsp;&nbsp;
+							{{/each}}
+						</div> -->
+						
+					</div>
+				</div>
+			</a>
+
+			<div class="container">
 				
 				{{#if IndexPage}}
 					<div class="row">
-					{{#each SubCategories "root"}}
-
-            			<div class="col-md-6">
-							<div class="box">
-								<div class="box-header with-border">
-								  <h3 class="box-title">{{name}}</h3>
-								</div>
-								<div class="box-body no-padding weixin">
-
-									<div class="article_list">
-						
-										{{#each Posts _id 5}}
-										<a class="list_item js_post" href="/site/{{SiteId}}/p/{{_id}}">
-											<div class="cover">
-												<img class="img js_img" src="/api/files/posts/{{image}}" alt="">
-											</div>
-											<div class="cont">
-												<h2 class="title js_title">{{title}}</h2>
-												<p class="desc">{{summary}}</p>
-												<!-- <p>{{fromNow postDate}}</p> -->
-											</div>
-										</a>
-										{{/each}}
-										
-									</div>
-
-								</div>
+						{{#if SubCategoriesCount "root"}}
+						<div class="col-sm-3">
+							<div class="box box-solid">
+							  <div class="box-body no-padding">
+								<ul class="nav nav-pills nav-stacked">
+									{{#each SubCategories "root"}}
+										<li><a href="/site/{{SiteId}}/c/{{_id}}"><i class="ion ion-ios-folder-outline"></i>{{name}}</a></li>
+									{{/each}}
+								</ul>
+							  </div>
 							</div>
 						</div>
-					{{/each}} 
+						{{/if}}
+						<div class="{{#if SubCategoriesCount 'root'}}col-sm-9{{else}}col-sm-12{{/if}}">
+							{{#each Posts "" 20}}
+								<div class="box box-widget col-sm-6">
+									<div class="box-header with-border">
+									  <h3 class="box-title"><a href="/site/{{SiteId}}/p/{{_id}}">{{title}}</a></h3>
+									  <p>{{fromNow modified}}</p>
+									</div>
+									<div class="box-body">
+										
+										<div class="post-summary ">
+											{{{PostSummary}}}
+										</div>
+										<div class="post-images ">
+											{{#each images}}
+												<a href="/api/files/posts/{{this}}" class="swipebox" title="">
+												  <img class="post-list-image" src="/api/files/posts/{{this}}" alt="Photo">
+												</a>
+											{{/each}} 
+										</div>
+									</div>
+								</div>
+							{{/each}}
+						</div>
+						
 					</div>
 				{{/if}}
 
 
 				{{#if Category}}
 					<div class="row">
-
-            			<div class="col-md-12">
-							<div class="box">
-								<div class="box-header with-border">
-								  <h3 class="box-title">{{Category.name}}</h3>
-								</div>
-								<div class="box-body no-padding weixin">
-
-									<div class="article_list">
-						
-										{{#each Posts Category._id 20}}
-										<a class="list_item js_post" href="/site/{{SiteId}}/p/{{_id}}">
-											<div class="cover">
-												<img class="img js_img" src="/api/files/posts/{{image}}" alt="">
-											</div>
-											<div class="cont">
-												<h2 class="title js_title">{{title}}</h2>
-												<p class="desc">{{summary}}</p>
-												<!-- <p>{{fromNow postDate}}</p> -->
-											</div>
-										</a>
-										{{/each}}
-										
-									</div>
-
-								</div>
+						{{#if SubCategoriesCount Category._id}}
+						<div class="col-sm-3">
+							<div class="box box-solid">
+							  <div class="box-body no-padding">
+								<ul class="nav nav-pills nav-stacked">
+									{{#each SubCategories "root"}}
+										<li><a href="/site/{{SiteId}}/c/{{_id}}"><i class="ion ion-ios-folder-outline"></i>{{name}}</a></li>
+									{{/each}}
+								</ul>
+							  </div>
 							</div>
+						</div>
+						{{/if}}
+						<div class="{{#if SubCategoriesCount Category._id}}col-sm-9{{else}}col-sm-12{{/if}}">
+							{{#each Posts Category._id 20}}
+								<div class="box box-widget">
+									<div class="box-header with-border">
+									  <h3 class="box-title"><a href="/site/{{SiteId}}/p/{{_id}}">{{title}}</a></h3>
+									  <p>{{fromNow modified}}</p>
+									</div>
+									<div class="box-body">
+										
+										<div class="post-summary ">
+											{{{PostSummary}}}
+										</div>
+										<div class="post-images ">
+											{{#each images}}
+												<a href="/api/files/posts/{{this}}" class="swipebox" title="">
+												  <img class="post-list-image" src="/api/files/posts/{{this}}" alt="Photo">
+												</a>
+											{{/each}} 
+										</div>
+									</div>
+								</div>
+							{{/each}}
+
+							{{#if PostsCount}}
+							{{else}}
+								<div class="box box-widget">
+						            <div class="box-body">
+						              {{_ "cms_posts_none"}}
+						            </div>
+						        </div>
+							{{/if}}
 						</div>
 					</div>
 				{{/if}}
@@ -184,24 +317,23 @@
 
 
 				{{#if PostPage}}
-					<div class="row">
 
-            			<div class="col-md-12">
-							<div class="box">
-								<div class="box-header with-border">
-								  <h3 class="box-title">{{Post.title}}</h3>
-								  <p>{{postDate}}</p>
-								</div>
-								<div class="box-body no-padding weixin">
-									<img class="img js_img" src="/api/files/posts/{{Post.image}}" alt="">
-									<p>{{Markdown Post.body}}</p>
-									<ul>
-									{{#each Attachments}}
-										<li><a href="/api/files/posts/{{_id}}" alt="" target="_blank">{{original.name}}</a></li>
-									{{/each}}
-									</ul>
-
-								</div>
+					<div class="box box-widget">
+						<div class="box-header with-border">
+						  <h3 class="box-title">{{Post.title}}</h3>
+						  <p>{{fromNow modified}}</p>
+						</div>
+						<div class="box-body">
+							
+							<div class="post-images">
+								{{#each Post.images}}
+									<a href="/api/files/posts/{{this}}" class="swipebox" title="">
+									  <img class="post-list-image" src="/api/files/posts/{{this}}" alt="Photo">
+									</a>
+								{{/each}} 
+							</div>
+							<div class="post-body">
+								<p>{{Markdown Post.body}}</p>
 							</div>
 						</div>
 					</div>

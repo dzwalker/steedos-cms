@@ -11,3 +11,9 @@ Template.cms_home.onRendered ->
     # else if siteCount == 1
     #     site = db.cms_sites.findOne()
     #     FlowRouter.go "/cms/" + site._id;
+
+
+Template.cms_home.events
+    "click #site-preview": (e,t)->
+        url = Meteor.absoluteUrl("site/" + this._id)
+        Steedos.openWindow(url)

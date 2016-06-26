@@ -33,8 +33,35 @@ Template.registerHelpers
             return db.cms_categories.find({parent: parent})
             
     SubCategoriesCount: (parent)->
-        return db.cms_categories.find({parent: parent}).count()
+        if parent == "root"
+            siteId = Template.instance().data.params.siteId
+            return db.cms_categories.find({site: siteId, parent: null}).count()
+        else
+            return db.cms_categories.find({parent: parent}).count()
 
+    fromNow: (posted)->
+        return moment(posted).fromNow()
+
+    Posts: (categoryId, limit, skip)->
+        if !limit 
+            limit = 5
+        skip = 0
+        siteId = Template.instance().data.params.siteId
+        if siteId and categoryId
+            return db.cms_posts.find({site: siteId, category: categoryId}, {sort: {postDate: -1}, limit: limit, skip: skip})
+        else if siteId
+            return db.cms_posts.find({site: siteId}, {sort: {postDate: -1}, limit: limit, skip: skip})
+
+    PostsCount: (categoryId)->
+        siteId = Template.instance().data.params.siteId
+        if siteId and categoryId
+            return db.cms_posts.find({site: siteId, category: categoryId}).count()
+        else if siteId
+            return db.cms_posts.find({site: siteId}).count()
+
+    PostSummary: ->
+        if this.body
+            return this.body.substring(0, 400)
 
 
 Template.registerHelper 'Title', ->
@@ -42,16 +69,6 @@ Template.registerHelper 'Title', ->
     site = db.cms_sites.findOne({_id: siteId}, {fields: {name: 1}})
 
     return site?.name
-
-Template.registerHelper 'Posts', (categoryId, limit, skip)->
-    if !limit 
-        limit = 5
-    skip = 0
-    siteId = Template.instance().data.params.siteId
-    if siteId and categoryId
-        return db.cms_posts.find({site: siteId, category: categoryId}, {sort: {postDate: -1}, limit: limit, skip: skip})
-    else if siteId
-        return db.cms_posts.find({site: siteId}, {sort: {postDate: -1}, limit: limit, skip: skip})
 
 Template.registerHelper 'Post', ->
     postId = Template.instance().data.params.postId

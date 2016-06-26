@@ -1,20 +1,6 @@
 <template name="cms_site_post">
 
-	<div class="navigation-bar">
-
-		<a href="/cms" class="btn btn-default" title='{{_ "Steedos"}}'>
-			<i class="ion ion-chevron-left"></i><span></span>
-		</a>
-
-		<span class="navigation-title dropdown">
-			<span>{{Site.name}}</span>
-		</span>
-		<div class="pull-right">
-			{{#if PostCanEdit}}
-		        <a class="btn btn-primary" href="/admin/edit/cms_posts/{{Post._id}}">{{_ "cms_button_edit"}}</a>
-			{{/if}}
-		</div>
-	</div>
+	{{> cms_site_header}}
 
 	<div class="content cms post">
 
@@ -68,6 +54,7 @@
 			    </div>
 			    {{/with}}
 			</div>
+
 		</div>
 	</div>
     

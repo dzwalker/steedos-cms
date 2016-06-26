@@ -5,9 +5,15 @@
         <div class="box box-widget site">
             <div class="site-header bg-aqua-active" style="background: url('{{absoluteUrl}}api/files/avatars/{{cover}}') center center;">
                 <button type="button" class="btn btn-default" data-toggle="offcanvas">
-                    <i class="fa fa-bars"></i>
+                    <i class="ion ion-navicon"></i>
                 </button>
                 <div class="pull-right">
+
+                    {{#if PostId}}
+                      {{#if PostCanEdit}}
+                        <a href="/admin/edit/cms_posts/{{PostId}}" class="btn btn-primary"><i class="ion ion-ios-compose-outline"></i> {{_ "cms_button_edit"}}</a>
+                      {{/if}}
+                    {{/if}}
                     <a href="/cms/" class="btn btn-default"><i class="ion ion-ios-home-outline"></i> {{_ "cms_label_dashboard"}}</a>
                 </div>
             </div>

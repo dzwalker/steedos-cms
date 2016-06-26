@@ -1,5 +1,6 @@
 FlowRouter.route '/cms',
 	action: (params, queryParams)->
+		Session.set("siteId", null)
 		BlazeLayout.render 'masterLayout',
 				main: "cms_home"
 

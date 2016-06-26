@@ -41,6 +41,9 @@ CMS.helpers =
 			return 0
 	
 
+	PostId: ()->
+		return FlowRouter.current().params.postId
+
 	Post: ()->
 		postId = FlowRouter.current().params.postId
 		if postId
@@ -60,7 +63,7 @@ CMS.helpers =
 
 	PostSummary: ->
 		if this.body
-			return this.body.substring(0, 200)
+			return this.body.substring(0, 400)
 
 	PostImage: (postId)->
 		if postId
@@ -145,3 +148,4 @@ CMS.helpers =
 			post = db.cms_posts.findOne(postId)
 			if post?.created_by == Meteor.userId()
 				return true;
+		return false;

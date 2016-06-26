@@ -16,7 +16,7 @@ db.cms_categories.adminConfig =
         {name: "name"},
         {name: "modified"},
     ]
-    selector: {owner: -1}
+    selector: {site: -1}
     routerAdmin: "/cms"
 
 db.cms_posts.adminConfig = 
@@ -26,7 +26,7 @@ db.cms_posts.adminConfig =
         {name: "title"},
         {name: "modified"},
     ]
-    selector: {owner: -1}
+    selector: {site: -1}
     routerAdmin: "/cms"
 
 Meteor.startup ->
@@ -48,7 +48,7 @@ if Meteor.isClient
     Meteor.startup ->
         Tracker.autorun ->
             if Meteor.userId() and Session.get("spaceId")
-                AdminTables["cms_sites"]?.selector = {owner: Meteor.userId(), space: Session.get("spaceId")}
+                AdminTables["cms_sites"]?.selector = {space: Session.get("spaceId")}
                 if Session.get("siteId")
                     db.cms_sites.adminConfig.routerAdmin = "/cms/" + Session.get("siteId")
                     db.cms_categories.adminConfig.routerAdmin = "/cms/" + Session.get("siteId")
@@ -57,3 +57,10 @@ if Meteor.isClient
                     AdminTables["cms_categories"]?.selector = {site: Session.get("siteId")}
                     AdminTables["cms_tags"]?.selector = {site: Session.get("siteId")}
                     AdminTables["cms_pages"]?.selector = {site: Session.get("siteId")}
+                else
+                    db.cms_sites.adminConfig.routerAdmin = "/cms/"
+                    AdminTables["cms_posts"]?.selector = {site: -1}
+                    AdminTables["cms_categories"]?.selector = {site: -1}
+                    AdminTables["cms_tags"]?.selector = {site: -1}
+                    AdminTables["cms_pages"]?.selector = {site: -1}
+                    

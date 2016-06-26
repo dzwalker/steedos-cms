@@ -76,7 +76,7 @@ db.cms_posts._simpleSchema = new SimpleSchema
 		optional: true,
 		autoform: 
 			type: ()->
-				if db.cms_categories.find({}).count
+				if db.cms_categories.find({}).count()
 					return "select"
 				return "hidden"
 			defaultValue: ->

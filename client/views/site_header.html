@@ -3,7 +3,7 @@
     {{#with Site}}
     <a href="/cms/{{_id}}">
         <div class="box box-widget site">
-            <div class="site-header bg-aqua-active" style="background: url('/api/files/avatars/{{cover}}') center center;">
+            <div class="site-header bg-aqua-active" style="background: url('{{absoluteUrl}}api/files/avatars/{{cover}}') center center;">
                 <button type="button" class="btn btn-default" data-toggle="offcanvas">
                     <i class="fa fa-bars"></i>
                 </button>
@@ -12,7 +12,7 @@
                 </div>
             </div>
             <div class="site-image">
-              <img class="img-circle" src="/avatar/cms_sites/{{_id}}" alt="{{name}}">
+              <img class="img-circle" src="{{absoluteUrl}}avatar/cms_sites/{{_id}}" alt="{{name}}">
             </div>
             <div class="box-footer">
               <h3 class="site-name">{{name}}</h3>

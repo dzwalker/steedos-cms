@@ -11,10 +11,12 @@
 
                     {{#if PostId}}
                       {{#if PostCanEdit}}
-                        <a href="/admin/edit/cms_posts/{{PostId}}" class="btn btn-primary"><i class="ion ion-ios-compose-outline"></i> {{_ "cms_button_edit"}}</a>
+                        <a href="/admin/edit/cms_posts/{{PostId}}" class="btn btn-primary"><i class="ion ion-ios-compose-outline"></i> <span>{{_ "cms_button_edit"}}</span></a>
                       {{/if}}
+                    {{else}}
+                        <a href="/admin/new/cms_posts" class="btn btn-primary"><i class="ion ion-ios-compose-outline"></i> <span>{{_ "cms_button_new"}}</span></a>
                     {{/if}}
-                    <a href="/cms/" class="btn btn-default"><i class="ion ion-ios-home-outline"></i> {{_ "cms_label_dashboard"}}</a>
+                    <a href="/cms/" class="btn btn-default"><i class="ion ion-ios-home-outline"></i> <span class="hidden-xs">{{_ "cms_label_dashboard"}}</span></a>
                 </div>
             </div>
             <div class="site-image">

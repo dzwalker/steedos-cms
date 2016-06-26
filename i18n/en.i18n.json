@@ -3,8 +3,8 @@
 
     "cms_home": "Home",
     "cms_label_dashboard": "Dashboard",
-    "cms_button_new": "New",
-    "cms_button_edit": "Edit Post",
+    "cms_button_new": "Compose",
+    "cms_button_edit": "Edit",
     "cms_button_admin": "Settings",
     "cms_button_back": "Back",
 

@@ -5,7 +5,7 @@ Template.cms_home.helpers
 Template.cms_home.onRendered ->
     siteCount = db.cms_sites.find().count();
     if siteCount == 0
-        Meteor.call "cms_init", Session.get("spaceId"), (error, result) ->
+        Meteor.call "space_blogs_init", Session.get("spaceId"), (error, result) ->
     #         if result
     #             FlowRouter.go "/cms/" + result;
     # else if siteCount == 1

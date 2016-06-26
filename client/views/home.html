@@ -7,7 +7,7 @@
     </button>
 
 		<span class="navigation-title dropdown">
-			{{_ "cms_label_blogs"}}
+			{{_ "Steedos CMS"}}
 		</span>
 		<div class="pull-right">
 			
@@ -33,14 +33,15 @@
           </div>
       </div> -->
 
+    <!-- <h3>{{_ "cms_label_space_blogs"}}</h3> -->
     <div class="row">
       {{#each cms_sites}}
         <div class="col-sm-4 border-right">
           <a class="navigation" href="/cms/{{_id}}">
           <div class="box box-widget widget-site">
-            <div class="widget-site-header bg-aqua-active">
+            <div class="widget-site-header bg-aqua-active" style="background: url('/api/files/avatars/{{cover}}') center center;">
               <h3 class="widget-site-username">
-                <i class="ion ion-ios-world-outline"></i> {{name}}
+                <i class="ion ion-ios-world-outline"></i> {{SpaceName}}
               </h3>
             </div>
             <div class="widget-site-image">

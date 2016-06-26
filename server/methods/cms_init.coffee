@@ -1,5 +1,5 @@
 Meteor.methods
-	cms_init: (spaceId)->
+	space_blogs_init: (spaceId)->
 		if !spaceId 
 			return false;
 		space = db.spaces.findOne(spaceId)
@@ -10,43 +10,42 @@ Meteor.methods
 			return false;
 
 		owner = db.users.findOne(space.owner)
-		siteName = space.name + " Blog"
-		if owner?.locale == "zh-cn"
-			siteName = space.name + " 博客"
-		siteId = db.cms_sites.insert
-			space: spaceId
-			name: siteName
-			owner: space.owner
-			admins: [space.owner]
 
-		owner = db.users.findOne(space.owner)
-
-		TEMPATE_CATEGORIES = ["Announcements", "Regulations", "Knowledge Base", "News"]
+		TEMPATE_CATEGORIES = ["News", "Regulations", "Knowledge Base"]
 		if owner?.locale == "zh-cn"
-			TEMPATE_CATEGORIES = ["公告通知", "规章制度", "知识库", "新闻动态"]
+			TEMPATE_CATEGORIES = ["公司新闻", "规章制度", "知识库"]
 		
 		order = 10
-		categoryIds = []
 		_.each TEMPATE_CATEGORIES, (c)->
-			categoryId = db.cms_categories.insert
+			siteId = db.cms_sites.insert
 				space: spaceId
-				site: siteId
 				name: c
+				owner: space.owner
 				order: order
-			categoryIds.push(categoryId)
 			order += 10
 
-		TEMPLATE_POST_TITLE = "Welcome to Steedos Blog"
-		TEMPLATE_POST_BODY = "You can read and share posts with your colleagues, Space admins can manage categories."
-		if owner?.locale == "zh-cn"
-			TEMPLATE_POST_TITLE = "欢迎使用博客应用"
-			TEMPLATE_POST_BODY = "您可以在这里与同事快速分享各类信息，管理员可以维护信息分类。"
+		# order = 10
+		# categoryIds = []
+		# _.each TEMPATE_CATEGORIES, (c)->
+		# 	categoryId = db.cms_categories.insert
+		# 		space: spaceId
+		# 		site: siteId
+		# 		name: c
+		# 		order: order
+		# 	categoryIds.push(categoryId)
+		# 	order += 10
 
-		db.cms_posts.insert
-			space: spaceId
-			site: siteId
-			category: [categoryIds[0]]
-			title: TEMPLATE_POST_TITLE
-			body: TEMPLATE_POST_BODY
+		# TEMPLATE_POST_TITLE = "Welcome to Steedos Blog"
+		# TEMPLATE_POST_BODY = "You can read and share posts with your colleagues, Space admins can manage categories."
+		# if owner?.locale == "zh-cn"
+		# 	TEMPLATE_POST_TITLE = "欢迎使用博客应用"
+		# 	TEMPLATE_POST_BODY = "您可以在这里与同事快速分享各类信息，管理员可以维护信息分类。"
+
+		# db.cms_posts.insert
+		# 	space: spaceId
+		# 	site: siteId
+		# 	category: [categoryIds[0]]
+		# 	title: TEMPLATE_POST_TITLE
+		# 	body: TEMPLATE_POST_BODY
 
 		return siteId

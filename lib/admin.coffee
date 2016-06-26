@@ -6,7 +6,7 @@ db.cms_sites.adminConfig =
         {name: "modified"},
     ]
     selector: {owner: -1}
-    routerAdmin: "/cms/admin"
+    routerAdmin: "/cms"
     disableAdd: true
 
 db.cms_posts.adminConfig = 
@@ -40,6 +40,7 @@ if Meteor.isClient
             if Meteor.userId() and Session.get("spaceId")
                 AdminTables["cms_sites"]?.selector = {owner: Meteor.userId(), space: Session.get("spaceId")}
                 if Session.get("siteId")
+                    db.cms_sites.adminConfig.routerAdmin = "/cms/" + Session.get("siteId")
                     AdminTables["cms_posts"]?.selector = {site: Session.get("siteId"), created_by: Meteor.userId()}
                     AdminTables["cms_categories"]?.selector = {site: Session.get("siteId")}
                     AdminTables["cms_tags"]?.selector = {site: Session.get("siteId")}

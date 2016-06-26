@@ -1,4 +1,16 @@
 CMS.helpers =
+
+	SpaceUserName: (userId)->
+		su = db.space_users.findOne({user: userId})
+		return su?.name
+
+	SpaceName: ()->
+		spaceId = Steedos.getSpaceId()
+		if spaceId
+			space = db.spaces.findOne(spaceId)
+			if space
+				return space.name
+
 	Posts: (limit, skip)->
 		if !limit 
 			limit = 5
@@ -33,10 +45,6 @@ CMS.helpers =
 		postId = FlowRouter.current().params.postId
 		if postId
 			return db.cms_posts.findOne({_id: postId})
-
-	SpaceUserName: (userId)->
-		su = db.space_users.findOne({user: userId})
-		return su?.name
 
 	PostURL: (postId)->
 		siteId = Session.get("siteId")

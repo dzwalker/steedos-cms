@@ -19,48 +19,64 @@ db.cms_sites._simpleSchema = new SimpleSchema
 	# 					label: obj.name,
 	# 					value: obj._id
 	# 			return options
+	type:
+		type: String,
+		defaultValue: "space",
+		allowedValues: ["space", "user"]
+		autoform: 
+			omit: true
+
 	name: 
 		type: String,
 		optional: true,
+
 	description: 
 		type: String,
 		optional: true,
 		autoform: 
 			rows: 3
-	view_permissions:
-		type: [String],
-		defaultValue: ["space_users"]
+
+	anonymous:
+		type: Boolean,
+		defaultValue: false
+
+	cover:
+		type: String,
+		optional: true,
 		autoform:
-			type: "select-checkbox"
-			options: {
-				#owner: t("cms_site_permissions_owner")
-				space_users: t("cms_site_permissions_space_users")
-				anonymous: t("cms_site_permissions_anonymous")
-			}
+			type: 'fileUpload'
+			collection: 'avatars'
+			accept: 'image/*'
+	avatar:
+		type: String,
+		optional: true,
+		autoform:
+			type: 'fileUpload'
+			collection: 'avatars'
+			accept: 'image/*'
 	owner: 
 		type: String,
+		optional: true,
 		autoform:
+			omit: true
 			type: "selectuser"
 			defaultValue: ->
 				return Meteor.userId()
-	admins: 
-		type: [String],
-		autoform:
-			type: "selectuser"
-			multiple: true
-			defaultValue: ->
-				return [Meteor.userId()]
+
+	order: 
+		type: Number,
+		optional: true,
 
 	layout: 
 		type: String,
 		optional: true,
 		autoform: 
 			rows: 10
-			omit: ()->
+			readonly: ()->
 				spaceId = Session.get("spaceId")
 				if spaceId
 					space = db.spaces.findOne(spaceId)
-					if space.is_paid
+					if space?.is_paid
 						return false
 				return true
 	created:

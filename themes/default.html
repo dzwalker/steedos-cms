@@ -11,6 +11,8 @@
 	<link rel="stylesheet" type="text/css" href="https://www.steedos.com/system/libs/admin-lte/2.3.2/css/skins/_all-skins.min.css">
 	<script type="text/javascript" src="https://www.steedos.com/system/libs/admin-lte/2.3.2/js/app.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="https://www.steedos.com/system/libs/ionicons/css/ionicons.min.css">
+	<script type="text/javascript" src="https://www.steedos.com/system/libs/swipebox/js/jquery.swipebox.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="https://www.steedos.com/system/libs/swipebox/css/swipebox.min.css">
 	<style>
 		.article_list * {
 		  margin: 0;
@@ -326,15 +328,16 @@
 						</div>
 						<div class="box-body">
 							
-							<div class="post-images">
+							<div class="post-body">
+								<p>{{Markdown Post.body}}</p>
+							</div>
+
+							<div class="row">
 								{{#each Post.images}}
 									<a href="/api/files/posts/{{this}}" class="swipebox" title="">
 									  <img class="post-list-image" src="/api/files/posts/{{this}}" alt="Photo">
 									</a>
 								{{/each}} 
-							</div>
-							<div class="post-body">
-								<p>{{Markdown Post.body}}</p>
 							</div>
 						</div>
 					</div>
@@ -342,5 +345,8 @@
 			</div>
 		</div>
 	</div>
+	<script>
+    	$('.swipebox').swipebox();
+    </script>
 </body>
 </html>

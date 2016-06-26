@@ -1,6 +1,6 @@
 <template name="cms_site_menu">
 
-    <a href="/admin/new/cms_posts" class="btn btn-primary btn-block margin-bottom">{{_ "cms_button_new"}}</a>
+    <a href="/admin/new/cms_posts" class="btn btn-primary btn-block margin-bottom"><i class="ion ion-ios-compose-outline"></i> {{_ "cms_button_new"}}</a>
 
     {{#if SubCategoriesCount ""}}
     <div class="box box-solid">
@@ -28,7 +28,8 @@
     </div>
     {{/if}}
     
-    <div class="box box-solid hidden-xs">
+    {{#if isSpaceAdmin}}
+    <div class="box box-solid">
       <div class="box-header with-border">
           <h3 class="box-title">{{_ "cms_button_admin"}}</h3>
         <div class="box-tools">
@@ -42,4 +43,5 @@
         </ul>
       </div>
     </div>
+    {{/if}}
 </template>

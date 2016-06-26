@@ -75,7 +75,10 @@ db.cms_posts._simpleSchema = new SimpleSchema
 		type: [String],
 		optional: true,
 		autoform: 
-			type: "select",
+			type: ()->
+				if db.cms_categories.find({}).count
+					return "select"
+				return "hidden"
 			defaultValue: ->
 				return Session.get("siteCategoryId");
 			options: ->

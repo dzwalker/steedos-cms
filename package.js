@@ -1,6 +1,6 @@
 Package.describe({
     name: 'steedos:cms',
-    version: '0.0.1',
+    version: '0.0.2',
     summary: 'Steedos CMS',
     git: ''
 });

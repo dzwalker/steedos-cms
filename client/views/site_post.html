@@ -46,7 +46,7 @@
 			        <div class="box-footer">
           				<ul>
 						{{#each PostAttachments}}
-							<li><a href="#" class="post-attachment" title="{{original.name}}">{{original.name}}
+							<li><a href="#" class="post-attachment" title="{{original.name}}">{{#if original.name}}{{original.name}}{{else}}{{_id}}{{/if}}
 							</a></li>
 						{{/each}}
           				</ul>

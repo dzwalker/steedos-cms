@@ -108,9 +108,9 @@ CMS.helpers =
 
 	SubCategories: (parent)->
 		if parent
-			return db.cms_categories.find({parent: parent})
+			return db.cms_categories.find({parent: parent}, {sort: {order: 1, created: 1}})
 		else
-			return db.cms_categories.find({parent: null})
+			return db.cms_categories.find({parent: null}, {sort: {order: 1, created: 1}})
 			
 	SubCategoriesCount: (parent)->
 		if parent
@@ -123,7 +123,7 @@ CMS.helpers =
 		return siteId
 
 	Sites: ->
-		return db.cms_sites.find()
+		return db.cms_sites.find({}, {sort: {order: 1, created: 1}})
 
 	Site: ->
 		siteId = Session.get("siteId")

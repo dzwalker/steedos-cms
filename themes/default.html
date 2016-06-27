@@ -167,6 +167,12 @@
 			max-height: 200px;
 			max-width: 100%;
 		}
+		@media (max-width: 767px) {
+			.site .container {
+				padding-right: 0;
+	    		padding-left: 0;
+			}
+		}
 	</style>
 </head>
 <body class="steedos site layout-top-nav skin-red">
@@ -241,10 +247,10 @@
 						{{/if}}
 						<div class="{{#if SubCategoriesCount 'root'}}col-sm-9{{else}}col-sm-12{{/if}}">
 							{{#each Posts "" 20}}
-								<div class="box box-widget col-sm-6">
+								<div class="box box-widget">
 									<div class="box-header with-border">
 									  <h3 class="box-title"><a href="/site/{{SiteId}}/p/{{_id}}">{{title}}</a></h3>
-									  <p>{{fromNow modified}}</p>
+									  <span>{{fromNow modified}}</span>
 									</div>
 									<div class="box-body">
 										
@@ -322,12 +328,14 @@
 				{{#if PostPage}}
 
 					<div class="box box-widget">
-						<div class="box-header with-border">
+						<!-- <div class="box-header with-border">
 						  <h3 class="box-title">{{Post.title}}</h3>
 						  <p>{{fromNow modified}}</p>
-						</div>
+						</div> -->
 						<div class="box-body">
 							
+			            	<h1 class="post-title col-sm-12">{{Post.title}}</h1>
+
 							<div class="post-body col-sm-12">
 								<p>{{Markdown Post.body}}</p>
 							</div>

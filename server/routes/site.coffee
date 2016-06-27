@@ -28,9 +28,9 @@ Template.registerHelpers
     SubCategories: (parent)->
         if parent == "root"
             siteId = Template.instance().data.params.siteId
-            return db.cms_categories.find({site: siteId, parent: null})
+            return db.cms_categories.find({site: siteId, parent: null}, {sort: {order: 1, created: 1}})
         else
-            return db.cms_categories.find({parent: parent})
+            return db.cms_categories.find({parent: parent}, {sort: {order: 1, created: 1}})
             
     SubCategoriesCount: (parent)->
         if parent == "root"
@@ -91,13 +91,6 @@ Template.registerHelper 'Site', ->
     siteId = Template.instance().data.params.siteId
     if siteId
         return db.cms_sites.findOne({_id: siteId})
-
-Template.registerHelper "SubCategories", (parent)->
-        if parent == "root"
-            siteId = Template.instance().data.params.siteId
-            return db.cms_categories.find({site: siteId, parent: null})
-        else
-            return db.cms_categories.find({parent: parent})
 
 Template.registerHelper 'IndexPage', ->
     data = Template.instance().data

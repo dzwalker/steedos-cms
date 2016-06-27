@@ -1,6 +1,4 @@
-Template.cms_home.helpers
-    cms_sites: ()->
-        return db.cms_sites.find()
+Template.cms_home.helpers CMS.helpers
 
 Template.cms_home.onRendered ->
     siteCount = db.cms_sites.find().count();

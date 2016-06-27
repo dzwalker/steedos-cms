@@ -2,7 +2,7 @@
 
 	{{> cms_site_header}}
 
-	<div class="content cms post">
+	<div class="content cms">
 
 		<div class="row">
 
@@ -12,9 +12,9 @@
 			        <div class="box-header with-border">
 			          <div class="user-block">
 			            <img class="img-circle" src="{{absoluteUrl}}avatar/{{created_by}}" alt="User Image">
-			            <span class="username">{{title}}
+			            <span class="username">{{author_name}}
 			            </span>
-			            <span class="description">{{author_name}} - {{fromNow modified}}</span>
+			            <span class="description">{{fromNow modified}}</span>
 			          </div>
 			          <div class="box-tools">
 			          	<button type="button" class="btn btn-transparent" title="Preview" id="post-preview">
@@ -29,6 +29,7 @@
 						<!-- {{#if PostImage _id}}
 			                <img class="img-responsive pad" src="/api/files/posts/{{PostImage _id}}" alt="Photo">
 			            {{/if}} -->  
+			            <h1 class="post-title">{{title}}</h1>
 
 						<div class="post-body col-sm-12">
 							{{{Markdown body}}}

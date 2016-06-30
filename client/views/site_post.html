@@ -6,7 +6,7 @@
 
 		<div class="row">
 
-			<div class="col-md-12">
+			<div class="col-md-8">
    				{{#with Post}}
 			    <div class="box box-widget">
 			        <div class="box-header with-border">
@@ -29,7 +29,7 @@
 						<!-- {{#if PostImage _id}}
 			                <img class="img-responsive pad" src="/api/files/posts/{{PostImage _id}}" alt="Photo">
 			            {{/if}} -->  
-			            <h1 class="post-title">{{title}}</h1>
+			            <h1 class="post-title col-sm-12">{{title}}</h1>
 
 						<div class="post-body col-sm-12">
 							{{{Markdown body}}}
@@ -56,6 +56,10 @@
 			        </div>
 			    </div>
 			    {{/with}}
+			</div>
+
+			<div class="col-sm-4">
+				{{> cms_site_menu}}
 			</div>
 
 		</div>

@@ -4,9 +4,9 @@
             <div class="box-header with-border">
               <div class="user-block">
                 <img class="img-circle" src="{{absoluteUrl}}avatar/{{created_by}}" alt="User Image">
-                <span class="username"><a href="{{PostURL _id}}">{{title}}</a>
+                <span class="username"><a href="{{PostURL _id}}">{{author_name}}</a>
                 </span>
-                <span class="description">{{author_name}} - {{fromNow modified}}</span>
+                <span class="description">{{fromNow modified}}</span>
               </div>
               <div class="box-tools">
                 <button type="button" class="btn btn-transparent" title="Preview" id="post-preview">
@@ -19,6 +19,9 @@
               </div>
             </div>
             <div class="box-body">
+              <div class="post-title">
+                <B>{{title}}</B>
+              </div>
               <div class="post-summary">
                 {{{PostSummary}}}
               </div>

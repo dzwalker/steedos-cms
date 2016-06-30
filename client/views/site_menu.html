@@ -2,7 +2,14 @@
 
    <!--  <a href="/admin/new/cms_posts" class="btn btn-primary btn-block margin-bottom"><i class="ion ion-ios-compose-outline"></i> {{_ "cms_button_new"}}</a> -->
 
-    {{#if SubCategoriesCount ""}}
+    {{#if PostId}}
+      {{#if PostCanEdit}}
+        <a href="/admin/edit/cms_posts/{{PostId}}" class="btn btn-success btn-block margin-bottom"><i class="ion ion-ios-compose-outline"></i> <span>{{_ "cms_button_edit"}}</span></a>
+      {{/if}}
+    {{else}}
+        <a href="/admin/new/cms_posts" class="btn btn-primary btn-block margin-bottom"><i class="ion ion-ios-compose-outline"></i> <span>{{_ "cms_button_new"}}</span></a>
+    {{/if}}
+
     <div class="box box-solid">
       <div class="box-body no-padding">
         <ul class="nav nav-pills nav-stacked">
@@ -26,7 +33,6 @@
         </ul>
       </div>
     </div>
-    {{/if}}
     
     {{#if isSpaceAdmin}}
     <div class="box box-solid">

@@ -18,6 +18,7 @@
     "cms_sites_layout": "自定义布局",
     "cms_sites_owner": "站长",
     "cms_sites_admins": "管理员",
+    "cms_sites_modified": "修改时间",
 
     "cms_posts": "文章",
     "cms_posts_title": "标题",

@@ -64,12 +64,6 @@ Template.registerHelpers
             return this.body.substring(0, 400)
 
 
-Template.registerHelper 'Title', ->
-    siteId = Template.instance().data.params.siteId
-    site = db.cms_sites.findOne({_id: siteId}, {fields: {name: 1}})
-
-    return site?.name
-
 Template.registerHelper 'Post', ->
     postId = Template.instance().data.params.postId
     if postId

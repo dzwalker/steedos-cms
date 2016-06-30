@@ -1,7 +1,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>{{Title}}{{#if Post}} - {{Post.title}}{{/if}}{{#if Tag}} - {{Tag}}{{/if}}</title>
+	<title>{{#if Post}}{{Post.title}} - {{/if}}{{#if Tag}}{{Tag}} - {{/if}} {{Site.name}}</title>
 	<meta name="description" content="{{site.metaDescription}}">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 	<script type="text/javascript" src="https://www.steedos.com/system/libs/jquery/2.2.0/jquery.min.js"></script>

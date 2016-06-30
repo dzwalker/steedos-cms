@@ -48,7 +48,7 @@ if Meteor.isClient
     Meteor.startup ->
         Tracker.autorun ->
             if Meteor.userId() and Session.get("spaceId")
-                AdminTables["cms_sites"]?.selector = {space: Session.get("spaceId")}
+                AdminTables["cms_sites"]?.selector = {space: Session.get("spaceId"), admins: Meteor.userId()}
                 if Session.get("siteId")
                     db.cms_sites.adminConfig.routerAdmin = "/cms/" + Session.get("siteId")
                     db.cms_categories.adminConfig.routerAdmin = "/cms/" + Session.get("siteId")

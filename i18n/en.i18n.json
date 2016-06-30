@@ -16,6 +16,8 @@
     "cms_sites_avatar": "Avatar Image",
     "cms_sites_order": "Order No",
     "cms_sites_layout": "Customize Layout",
+    "cms_sites_owner": "Owner",
+    "cms_sites_admins": "Admins",
 
     "cms_posts": "Posts",
     "cms_posts_title": "Title",

@@ -13,9 +13,11 @@
     "cms_sites_description": "描述",
     "cms_sites_anonymous": "允许匿名访问",
     "cms_sites_cover": "封面图片",
-    "cms_sites_avatar": "头像图片",
+    "cms_sites_avatar": "Logo图片",
     "cms_sites_order": "排序号",
     "cms_sites_layout": "自定义布局",
+    "cms_sites_owner": "站长",
+    "cms_sites_admins": "管理员",
 
     "cms_posts": "文章",
     "cms_posts_title": "标题",

@@ -4,13 +4,6 @@ CMS.helpers =
 		su = db.space_users.findOne({user: userId})
 		return su?.name
 
-	SpaceName: ()->
-		spaceId = Steedos.getSpaceId()
-		if spaceId
-			space = db.spaces.findOne(spaceId)
-			if space
-				return space.name
-
 	Posts: (limit, skip)->
 		if !limit 
 			limit = 5
@@ -40,7 +33,6 @@ CMS.helpers =
 		else
 			return 0
 	
-
 	PostId: ()->
 		return FlowRouter.current().params.postId
 
@@ -146,6 +138,11 @@ CMS.helpers =
 		postId = Session.get("postId")
 		if postId
 			post = db.cms_posts.findOne(postId)
-			if post?.created_by == Meteor.userId()
-				return true;
+			if post
+				if post.created_by == Meteor.userId()
+					return true;
+				if post.space
+					if Steedos.isSpaceAdmin(post.space)
+						return true
+
 		return false;

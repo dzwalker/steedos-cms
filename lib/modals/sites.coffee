@@ -58,13 +58,17 @@ db.cms_sites._simpleSchema = new SimpleSchema
 			accept: 'image/*'
 	owner: 
 		type: String,
-		optional: true,
 		autoform:
-			omit: true
 			type: "selectuser"
 			defaultValue: ->
 				return Meteor.userId()
-
+	admins: 
+		type: [String],
+		autoform:
+			type: "selectuser"
+			multiple: true
+			defaultValue: ->
+				return [Meteor.userId()]
 	order: 
 		type: Number,
 		optional: true,
@@ -112,7 +116,10 @@ if Meteor.isServer
 			throw new Meteor.Error(400, t("cms_sites_error.login_required"));
 
 		doc.owner = userId
-		doc.admins = [userId]
+		if !doc.admins
+			doc.admins = [userId]
+		if doc.admins.indexOf(userId) < 0
+			doc.admins.push(userId)
 
 
 	db.cms_sites.after.insert (userId, doc) ->
@@ -124,6 +131,10 @@ if Meteor.isServer
 		# only site owner can modify site
 		if doc.owner != userId
 			throw new Meteor.Error(400, t("cms_sites_error.site_owner_only"));
+
+		if modifier.$set.admins
+			if modifier.$set.admins.indexOf(userId) < 0
+				modifier.$set.admins.push(userId)
 
 		modifier.$set.modified_by = userId;
 		modifier.$set.modified = new Date();

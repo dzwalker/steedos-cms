@@ -5,6 +5,10 @@ Package.describe({
     git: ''
 });
 
+Npm.depends({
+  cookies: "0.6.1",
+});
+
 Package.onUse(function(api) { 
     api.versionsFrom("1.2.1");
 

@@ -1,3 +1,5 @@
+Cookies = Npm.require("cookies")
+
 Template.registerHelpers = (dict) ->
     _.each dict, (v, k)->
         Template.registerHelper k, v
@@ -122,6 +124,34 @@ Template.registerHelper 'equals', (a, b)->
 renderSite = (req, res, next) ->
     site = db.cms_sites.findOne({_id: req.params.siteId})
     
+    if !site
+        res.writeHead 404
+        res.end("Site not found")
+        return
+
+    cookies = new Cookies( req, res );
+    userId = cookies.get("X-User-Id")
+    authToken = cookies.get("X-Auth-Token")
+
+    if userId and authToken
+        hashedToken = Accounts._hashLoginToken(authToken)
+        user = Meteor.users.findOne
+            _id: userId,
+            "services.resume.loginTokens.hashedToken": hashedToken
+
+    if !site.anonymous 
+        if !user
+            res.writeHead 401
+            res.end("Access Denied")
+            return
+
+        if site.space 
+            su = db.space_users.findOne({space: site.space, user: userId})
+            if !su
+                res.writeHead 401
+                res.end("Access Denied")
+                return
+
     templateName = 'site_theme_' + site.theme
     layout = site.layout
     if !layout

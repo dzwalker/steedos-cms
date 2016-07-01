@@ -39,8 +39,6 @@ db.cms_sites._simpleSchema = new SimpleSchema
 	anonymous:
 		type: Boolean,
 		defaultValue: true
-		autoform:
-			omit: true
 
 	cover:
 		type: String,

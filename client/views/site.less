@@ -1,35 +1,45 @@
 .cms{
 	.post-list{
-	    max-width: 1000px;
-	    .post-summary {
-	        overflow: hidden;
-	        text-overflow: ellipsis;
-	        max-height: 60px;
-	    }
+		max-width: 1000px;
 	}
 
 	.post{
-	    max-width: 1000px;
+		max-width: 1000px;
 	}
 
+	.post-title {
+		font-size: 150%;
+	}
+		
+	.post-date {
+		color: gray;
+	}
+
+	.post-summary {
+		color: black;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		max-height: 60px;
+	}
+	
 	.btn-transparent {
-	    background-color: transparent;
-	    color: #444;
+		background-color: transparent;
+		color: #444;
 	}
 
-    .swipebox {
-        margin-right: 10px;
-        margin-top: 10px;
-        box-sizing: border-box;
-        float: left;
-        display: block;   
-    	background-size: cover;
-    	width: 140px;
-    	height: 140px;
-    }
+	.swipebox {
+		margin-right: 5px;
+		margin-top: 5px;
+		box-sizing: border-box;
+		float: left;
+		display: block;   
+		background-size: cover;
+		width: 140px;
+		height: 140px;
+	}
 
 	img {
-        max-width: 100%;
+		max-width: 100%;
 	}
 	.article_list {
 	
@@ -102,14 +112,14 @@
 	}
 
 	.img-fileUpload-thumbnail {
-	    max-height: 200px;
-	    max-width: 300px;
-    }
+		max-height: 200px;
+		max-width: 300px;
+	}
 }
 
 @media (max-width: 767px) {
 	.cms.content {
-	    padding-right: 0;
-	    padding-left: 0;
+		padding-right: 0;
+		padding-left: 0;
 	}
 }

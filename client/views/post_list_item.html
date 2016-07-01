@@ -4,7 +4,7 @@
 		<div class="box-header with-border">
 			<div class="user-block">
 				<img class="img-circle" src="{{absoluteUrl}}avatar/{{created_by}}" alt="User Image">
-				<span class="username"><a href="{{PostURL _id}}">{{author_name}}</a>
+				<span class="username">{{author_name}}
 				</span>
 				<span class="description">{{fromNow modified}}</span>
 			</div>
@@ -19,12 +19,14 @@
 			</div>
 		</div>
 		<div class="box-body">
-			<p class="post-title">
-				<B>{{title}}</B>
-			</p>
-			<div class="post-summary">
-				{{{PostSummary}}}
-			</div>
+			<a href="{{PostURL _id}}">
+				<p class="post-title">
+					<B>{{title}}</B>
+				</p>
+				<div class="post-summary">
+					{{{PostSummary}}}
+				</div>
+			</a>
 
 			<div class="margin-top">
 				{{#each images}}

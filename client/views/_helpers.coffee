@@ -146,3 +146,6 @@ CMS.helpers =
 						return true
 
 		return false;
+
+	subsReady: ()->
+		return Steedos.subsBootstrap.ready() and Steedos.subsSite.ready()

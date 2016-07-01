@@ -37,6 +37,7 @@ Package.onUse(function(api) {
     api.use('meteorhacks:ssr@2.2.0');
     api.use('steedos:lib@0.0.1');
     api.use('tap:i18n@1.7.0');
+    api.use('meteorhacks:subs-manager');
 
 
 

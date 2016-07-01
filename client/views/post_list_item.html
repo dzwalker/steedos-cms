@@ -1,51 +1,50 @@
 <template name="cms_post_list_item">
 
-        <div class="box box-widget">
-            <div class="box-header with-border">
-              <div class="user-block">
-                <img class="img-circle" src="{{absoluteUrl}}avatar/{{created_by}}" alt="User Image">
-                <span class="username"><a href="{{PostURL _id}}">{{author_name}}</a>
-                </span>
-                <span class="description">{{fromNow modified}}</span>
-              </div>
-              <div class="box-tools">
-                <button type="button" class="btn btn-transparent" title="Preview" id="post-preview">
-                    <i class="ion ion-ios-upload-outline"></i></button>
-                <!-- <button type="button" class="btn btn-box-tool" data-toggle="tooltip" title="Mark as read">
-                  <i class="fa fa-circle-o"></i></button>
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                </button>
-                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button> -->
-              </div>
-            </div>
-            <div class="box-body">
-              <div class="post-title">
-                <B>{{title}}</B>
-              </div>
-              <div class="post-summary">
-                {{{PostSummary}}}
-              </div>
+	<div class="box box-widget">
+		<div class="box-header with-border">
+			<div class="user-block">
+				<img class="img-circle" src="{{absoluteUrl}}avatar/{{created_by}}" alt="User Image">
+				<span class="username"><a href="{{PostURL _id}}">{{author_name}}</a>
+				</span>
+				<span class="description">{{fromNow modified}}</span>
+			</div>
+			<div class="box-tools">
+				<button type="button" class="btn btn-transparent" title="Preview" id="post-preview">
+						<i class="ion ion-ios-upload-outline"></i></button>
+				<!-- <button type="button" class="btn btn-box-tool" data-toggle="tooltip" title="Mark as read">
+					<i class="fa fa-circle-o"></i></button>
+				<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+				</button>
+				<button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button> -->
+			</div>
+		</div>
+		<div class="box-body">
+			<p class="post-title">
+				<B>{{title}}</B>
+			</p>
+			<div class="post-summary">
+				{{{PostSummary}}}
+			</div>
 
-              <div class="margin-top">
-                  {{#each images}}
-                    <a href="{{absoluteUrl}}api/files/posts/{{this}}" class="swipebox" title="">
-                      <img class="post-list-image" src="{{absoluteUrl}}api/files/posts/{{this}}" alt="Photo">
-                    </a>
-                  {{/each}} 
-              </div>
-              
-              <!-- <button type="button" class="btn btn-default btn-xs"><i class="fa fa-share"></i> Share</button>
-              <button type="button" class="btn btn-default btn-xs"><i class="fa fa-thumbs-o-up"></i> Like</button>
-              <span class="pull-right text-muted">127 likes - 3 comments</span> -->
-            </div>
-            <!-- <div class="box-footer">
-              <a href="{{PostURL _id}}">
-                {{_ "cms_posts_read_all"}}
-                <div class="pull-right">
-                  <i class="ion ion-chevron-right"></i>
-                </div>
-              </a>
-            </div> -->
-        </div>
-        
+			<div class="margin-top">
+				{{#each images}}
+					<a href="{{absoluteUrl}}api/files/posts/{{this}}" class="swipebox" style="background-image: url('{{absoluteUrl}}api/files/posts/{{this}}')">
+					</a>
+				{{/each}} 
+			</div>
+			
+			<!-- <button type="button" class="btn btn-default btn-xs"><i class="fa fa-share"></i> Share</button>
+			<button type="button" class="btn btn-default btn-xs"><i class="fa fa-thumbs-o-up"></i> Like</button>
+			<span class="pull-right text-muted">127 likes - 3 comments</span> -->
+		</div>
+		<!-- <div class="box-footer">
+			<a href="{{PostURL _id}}">
+				{{_ "cms_posts_read_all"}}
+				<div class="pull-right">
+					<i class="ion ion-chevron-right"></i>
+				</div>
+			</a>
+		</div> -->
+	</div>
+				
 </template>

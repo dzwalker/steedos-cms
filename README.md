@@ -6,10 +6,9 @@ Steedos Sites is an Content Management System, with Yammer like communication fe
 ### Designed Features
 
 - Site: A space may have multi sites. As first launch,  steedos will create a new site for space. 
-- Categories: Every site has categories tree, with max 5 levels, space admins can define categories for site. 
-- Category Permissions:  Only specified organizations / users can see category and posts in category if it has permissions. 
+- Categories: Every site has categories tree, with max 5 levels, site owner can define categories for site. 
 
-- Post Permissions: Only specified organizations / users can see posts if post has permissions. 
+- Post: Site admins can add and edit posts. 
 - Post Tags: Post has tags, users can view posts by specific tag
 - Post Attachments
 - Post Image: First image in attachments will picked as post image, post image will show on list view

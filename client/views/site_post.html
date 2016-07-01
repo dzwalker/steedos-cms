@@ -2,7 +2,7 @@
 
 	{{> cms_site_header}}
 
-	<div class="content cms">
+	<div class="cms content">
 
 		<div class="row">
 
@@ -29,16 +29,18 @@
 						<!-- {{#if PostImage _id}}
 			                <img class="img-responsive pad" src="/api/files/posts/{{PostImage _id}}" alt="Photo">
 			            {{/if}} -->  
-			            <h1 class="post-title col-sm-12">{{title}}</h1>
+			            
+						<p class="post-title">
+							<B>{{title}}</B>
+						</p>
 
-						<div class="post-body col-sm-12">
+						<div class="post-body">
 							{{{Markdown body}}}
 						</div>
 						
-						<div class="col-sm-12">
+						<div class="post-images">
 						{{#each PostImages}}
-							<a href="{{absoluteUrl}}api/files/posts/{{_id}}/{{original.name}}" class="swipebox" title="{{original.name}}">
-								<img class="img-responsive pad" src="{{absoluteUrl}}api/files/posts/{{_id}}/{{original.name}}" alt="{{original.name}}">
+							<a href="{{absoluteUrl}}api/files/posts/{{_id}}/{{original.name}}" class="swipebox" title="{{original.name}}" style="background-image: url('{{absoluteUrl}}api/files/posts/{{_id}}/{{original.name}}')">
 							</a>
 						{{/each}}
 						</div>
@@ -46,6 +48,7 @@
 			          <button type="button" class="btn btn-default btn-xs"><i class="fa fa-thumbs-o-up"></i> Like</button>
 			          <span class="pull-right text-muted">127 likes - 3 comments</span> -->
 			        </div>
+			        {{#if PostAttachmentsCount}}
 			        <div class="box-footer">
           				<ul>
 						{{#each PostAttachments}}
@@ -54,6 +57,7 @@
 						{{/each}}
           				</ul>
 			        </div>
+			        {{/if}}
 			    </div>
 			    {{/with}}
 			</div>

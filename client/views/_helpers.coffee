@@ -77,6 +77,12 @@ CMS.helpers =
 			if post and post.attachments
 				return cfs.posts.find({_id: {$in: post.attachments}}).fetch()
 
+	PostAttachmentsCount: ()->
+		postId = FlowRouter.current().params.postId
+		if postId
+			post = db.cms_posts.findOne({_id: postId})
+			return post?.attachments?.length
+
 	CategoryId: ()->
 		return Session.get("siteCategoryId")
 
@@ -122,6 +128,18 @@ CMS.helpers =
 		if siteId
 			return db.cms_sites.findOne({_id: siteId})
 
+	isSiteOwner: ->
+		siteId = Session.get("siteId")
+		if siteId
+			site = db.cms_sites.findOne({_id: siteId})
+			return site?.owner == Meteor.userId()
+
+	isSiteAdmin: ->
+		siteId = Session.get("siteId")
+		if siteId
+			site = db.cms_sites.findOne({_id: siteId})
+			return site?.admins.contains(Meteor.userId())
+
 	Tags: ->
 		siteId = Session.get("siteId")
 		if siteId
@@ -133,19 +151,6 @@ CMS.helpers =
 	Markdown: (text)->
 		if text
 			return Spacebars.SafeString(Markdown(text))
-
-	PostCanEdit: ()->
-		postId = Session.get("postId")
-		if postId
-			post = db.cms_posts.findOne(postId)
-			if post
-				if post.created_by == Meteor.userId()
-					return true;
-				if post.space
-					if Steedos.isSpaceAdmin(post.space)
-						return true
-
-		return false;
 
 	subsReady: ()->
 		return Steedos.subsBootstrap.ready() and Steedos.subsSite.ready()

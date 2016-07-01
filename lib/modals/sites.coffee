@@ -36,6 +36,23 @@ db.cms_sites._simpleSchema = new SimpleSchema
 		autoform: 
 			rows: 3
 
+	owner: 
+		type: String,
+		optional: true,
+		autoform:
+			omit: true
+			type: "selectuser"
+			defaultValue: ->
+				return Meteor.userId()
+				
+	admins: 
+		type: [String],
+		autoform:
+			type: "selectuser"
+			multiple: true
+			defaultValue: ->
+				return [Meteor.userId()]
+
 	anonymous:
 		type: Boolean,
 		defaultValue: true
@@ -54,19 +71,6 @@ db.cms_sites._simpleSchema = new SimpleSchema
 			type: 'fileUpload'
 			collection: 'avatars'
 			accept: 'image/*'
-	owner: 
-		type: String,
-		autoform:
-			type: "selectuser"
-			defaultValue: ->
-				return Meteor.userId()
-	admins: 
-		type: [String],
-		autoform:
-			type: "selectuser"
-			multiple: true
-			defaultValue: ->
-				return [Meteor.userId()]
 	order: 
 		type: Number,
 		optional: true,

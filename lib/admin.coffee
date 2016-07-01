@@ -3,17 +3,18 @@ db.cms_sites.adminConfig =
     color: "blue"
     tableColumns: [
         {name: "name"},
+        {name: "order"},
         {name: "modified"},
     ]
     selector: {owner: -1}
     routerAdmin: "/cms"
-    disableAdd: true
 
 db.cms_categories.adminConfig = 
     icon: "ion ion-ios-albums-outline"
     color: "blue"
     tableColumns: [
         {name: "name"},
+        {name: "order"},
         {name: "modified"},
     ]
     selector: {site: -1}
@@ -24,6 +25,7 @@ db.cms_posts.adminConfig =
     color: "blue"
     tableColumns: [
         {name: "title"},
+        {name: "author_name"},
         {name: "modified"},
     ]
     selector: {site: -1}
@@ -48,7 +50,7 @@ if Meteor.isClient
     Meteor.startup ->
         Tracker.autorun ->
             if Meteor.userId() and Session.get("spaceId")
-                AdminTables["cms_sites"]?.selector = {space: Session.get("spaceId"), admins: Meteor.userId()}
+                AdminTables["cms_sites"]?.selector = {space: Session.get("spaceId"), owner: Meteor.userId()}
                 if Session.get("siteId")
                     db.cms_sites.adminConfig.routerAdmin = "/cms/" + Session.get("siteId")
                     db.cms_categories.adminConfig.routerAdmin = "/cms/" + Session.get("siteId")

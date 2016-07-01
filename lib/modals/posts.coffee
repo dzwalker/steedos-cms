@@ -27,11 +27,13 @@ db.cms_posts._simpleSchema = new SimpleSchema
 		max: 500,
 		autoform: 
 			order: 20
-	# summary: 
-	# 	type: String,
-	# 	optional: true,
-	# 	autoform: 
-	# 		order: 25
+
+	summary: 
+		type: String,
+		optional: true,
+		autoform: 
+			omit: true
+
 	# slug: 
 	# 	type: String,
 	# 	optional: true
@@ -276,6 +278,7 @@ if Meteor.isServer
 		user = db.users.findOne({_id: userId})
 		if user
 			doc.author_name = user.name
+		doc.summary = doc.body.substring(0, 400)
 
 		# pick images from attachments 
 		if doc and doc.attachments
@@ -305,13 +308,16 @@ if Meteor.isServer
 		modifier.$set.modified = new Date();
 
 		# pick images from attachments 
-		if modifier.$set and modifier.$set.attachments
+		if modifier.$set.attachments
 			modifier.$set.attachments = _.compact(modifier.$set.attachments)
 			atts = cfs.posts.find({_id: {$in: modifier.$set.attachments}}).fetch()
 			modifier.$set.images = []
 			_.each atts, (att)->
 				if att.isImage()
 					modifier.$set.images.push att._id
+
+		if modifier.$set.body 
+			modifier.$set.summary = modifier.$set.body.substring(0, 400)
 
 
 	db.cms_posts.after.update (userId, doc, fieldNames, modifier, options) ->

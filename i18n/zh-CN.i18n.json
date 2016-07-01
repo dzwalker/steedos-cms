@@ -1,5 +1,5 @@
 {
-	"Steedos CMS": "网站",
+	"Steedos CMS": "博客",
 
     "cms_home": "首页",
     "cms_label_dashboard": "导航",
@@ -8,7 +8,7 @@
     "cms_button_admin": "设置",
     "cms_button_back": "返回",
 
-    "cms_sites": "网站",
+    "cms_sites": "博客",
     "cms_sites_name": "名称",
     "cms_sites_description": "描述",
     "cms_sites_anonymous": "允许匿名访问",

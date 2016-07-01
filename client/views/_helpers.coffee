@@ -47,15 +47,17 @@ CMS.helpers =
 			siteCategoryId = Session.get("siteCategoryId")
 			tag = Session.get("siteTag")
 			if siteCategoryId
-				return "/cms/" + siteId + "/c/" +  siteCategoryId + "/p/" + postId
+				return "/cms/s/" + siteId + "/c/" +  siteCategoryId + "/p/" + postId
 			else if tag
-				return "/cms/" + siteId + "/t/" +  tag + "/p/" + postId
+				return "/cms/s/" + siteId + "/t/" +  tag + "/p/" + postId
 			else
-				return "/cms/" + siteId + "/p/" + postId
+				return "/cms/s/" + siteId + "/p/" + postId
 
 	PostSummary: ->
 		if this.body
 			return this.body.substring(0, 400)
+		else
+			return this.summary
 
 	PostImage: (postId)->
 		if postId

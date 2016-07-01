@@ -9,7 +9,7 @@
 			<div class="col-md-8">
    				{{#with Post}}
 			    <div class="box box-widget">
-			        <div class="box-header with-border">
+			        <!-- <div class="box-header with-border">
 			          <div class="user-block">
 			            <img class="img-circle" src="{{absoluteUrl}}avatar/{{created_by}}" alt="User Image">
 			            <span class="username">{{author_name}}
@@ -19,12 +19,9 @@
 			          <div class="box-tools">
 			          	<button type="button" class="btn btn-transparent" title="Preview" id="post-preview">
 			              <i class="ion ion-ios-upload-outline"></i></button>
-			            <!-- 
-			            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-			            </button>
-			            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button> -->
+			            
 			          </div>
-			        </div>
+			        </div> -->
 			        <div class="box-body">
 						<!-- {{#if PostImage _id}}
 			                <img class="img-responsive pad" src="/api/files/posts/{{PostImage _id}}" alt="Photo">
@@ -33,6 +30,7 @@
 						<p class="post-title">
 							<B>{{title}}</B>
 						</p>
+				        <p class="post-date">{{author_name}} {{fromNow modified}}</p>
 
 						<div class="post-body">
 							{{{Markdown body}}}

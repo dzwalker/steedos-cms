@@ -52,9 +52,9 @@ if Meteor.isClient
             if Meteor.userId() and Session.get("spaceId")
                 AdminTables["cms_sites"]?.selector = {space: Session.get("spaceId"), owner: Meteor.userId()}
                 if Session.get("siteId")
-                    db.cms_sites.adminConfig.routerAdmin = "/cms/" + Session.get("siteId")
-                    db.cms_categories.adminConfig.routerAdmin = "/cms/" + Session.get("siteId")
-                    db.cms_posts.adminConfig.routerAdmin = "/cms/" + Session.get("siteId")
+                    db.cms_sites.adminConfig.routerAdmin = "/cms/s/" + Session.get("siteId")
+                    db.cms_categories.adminConfig.routerAdmin = "/cms/s/" + Session.get("siteId")
+                    db.cms_posts.adminConfig.routerAdmin = "/cms/s/" + Session.get("siteId")
                     AdminTables["cms_posts"]?.selector = {site: Session.get("siteId"), created_by: Meteor.userId()}
                     AdminTables["cms_categories"]?.selector = {site: Session.get("siteId")}
                     AdminTables["cms_tags"]?.selector = {site: Session.get("siteId")}

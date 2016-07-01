@@ -1,5 +1,5 @@
 {
-	"Steedos CMS": "Sites",
+	"Steedos CMS": "Blogs",
 
     "cms_home": "Home",
     "cms_label_dashboard": "Dashboard",
@@ -8,7 +8,7 @@
     "cms_button_admin": "Settings",
     "cms_button_back": "Back",
 
-    "cms_sites": "Sites",
+    "cms_sites": "Blogs",
     "cms_sites_name": "Name",
     "cms_sites_description": "Description",
     "cms_sites_anonymous": "Anonymous View",

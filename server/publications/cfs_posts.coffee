@@ -5,4 +5,4 @@ Meteor.publish 'cfs_posts', (postId)->
     unless postId
       return this.ready()
 
-    cfs.posts.find({post: postId})
+    cfs.posts.find {post: postId}

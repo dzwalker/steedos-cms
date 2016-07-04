@@ -19,6 +19,11 @@
     "cms_sites_owner": "所有者",
     "cms_sites_admins": "协作者",
     "cms_sites_modified": "修改时间",
+    "cms_sites_space": "工作区",
+    "cms_sites_id": "ID",
+    "cms_sites_created_by": "创建者",
+    "cms_sites_created": "创建时间",
+    "cms_sites_modified_by": "修改者",
 
     "cms_posts": "文章",
     "cms_posts_title": "标题",

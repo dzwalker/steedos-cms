@@ -19,6 +19,11 @@
     "cms_sites_owner": "Owner",
     "cms_sites_admins": "Collaborators",
     "cms_sites_modified": "Modified",
+    "cms_sites_space": "Space",
+    "cms_sites_id": "ID",
+    "cms_sites_created_by": "Created By",
+    "cms_sites_created": "Created",
+    "cms_sites_modified_by": "Modified By",
 
     "cms_posts": "Posts",
     "cms_posts_title": "Title",

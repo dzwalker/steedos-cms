@@ -1,5 +1,5 @@
 {
-	"Steedos CMS": "Blogs",
+    "Steedos CMS": "Blogs",
 
     "cms_home": "Home",
     "cms_label_dashboard": "Dashboard",
@@ -10,6 +10,7 @@
 
     "cms_sites": "Blogs",
     "cms_sites_name": "Name",
+    "cms_sites_id": "ID",
     "cms_sites_description": "Description",
     "cms_sites_anonymous": "Anonymous View",
     "cms_sites_cover": "Cover Image",
@@ -19,11 +20,12 @@
     "cms_sites_owner": "Owner",
     "cms_sites_admins": "Collaborators",
     "cms_sites_modified": "Modified",
+    "cms_sites_type": "Type",
     "cms_sites_space": "Space",
-    "cms_sites_id": "ID",
     "cms_sites_created_by": "Created By",
     "cms_sites_created": "Created",
     "cms_sites_modified_by": "Modified By",
+
 
     "cms_posts": "Posts",
     "cms_posts_title": "Title",
@@ -34,10 +36,14 @@
 
     "cms_categories": "Categories",
     "cms_categories_name": "Name",
+    "cms_categories_id": "ID",
     "cms_categories_description": "Description",
     "cms_categories_parent": "Parent",
     "cms_categories_order": "Order No",
     "cms_categories_modified": "Modified",
+    "cms_categories_space": "Space",
+    "cms_categories_featured": "Featured",
+    "cms_categories_menu": "Desplayed in the menu",
 
     "cms_posts_none": "No posts found."
 }

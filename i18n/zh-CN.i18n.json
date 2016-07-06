@@ -56,6 +56,9 @@
     "cms_categories_menu": "在菜单中显示",
 
 
-    "cms_posts_none": "没有文章."
+    "cms_posts_none": "没有文章.",
+
+    "cms_sites_error_login_required": "请先登录",
+    "cms_sites_error_site_owner_only": "博客版主才能进行修改"
 
 }

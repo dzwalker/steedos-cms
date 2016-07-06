@@ -115,7 +115,7 @@ if Meteor.isServer
 		doc.modified = new Date()
 		
 		if !userId
-			throw new Meteor.Error(400, t("cms_sites_error.login_required"));
+			throw new Meteor.Error(400, "cms_sites_error_login_required");
 
 		doc.owner = userId
 		if !doc.admins
@@ -132,7 +132,7 @@ if Meteor.isServer
 
 		# only site owner can modify site
 		if doc.owner != userId
-			throw new Meteor.Error(400, t("cms_sites_error.site_owner_only"));
+			throw new Meteor.Error(400, "cms_sites_error_site_owner_only");
 
 		if modifier.$set.admins
 			if modifier.$set.admins.indexOf(userId) < 0

@@ -55,5 +55,8 @@
     "cms_categories_featured": "Featured",
     "cms_categories_menu": "Desplayed in the menu",
 
-    "cms_posts_none": "No posts found."
+    "cms_posts_none": "No posts found.",
+
+    "cms_sites_error_login_required": "Login required",
+    "cms_sites_error_site_owner_only": "Site owner only"
 }

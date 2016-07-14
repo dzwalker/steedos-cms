@@ -43,6 +43,9 @@ Package.onUse(function(api) {
     api.use('tap:i18n@1.7.0');
     api.use('meteorhacks:subs-manager');
 
+    api.use('iyyang:cfs-aliyun@0.1.0');
+    api.use('cfs:s3@0.1.3');
+
 
 
     //api.add_files("package-tap.i18n", ["client", "server"]);

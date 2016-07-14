@@ -85,6 +85,7 @@ Package.onUse(function(api) {
 
     api.addFiles('client/router.coffee', 'client');
     api.addFiles('client/subscribe.coffee', 'client');
+    api.addFiles('client/lib/cfs/posts.coffee', 'client');
 
     api.addFiles('server/methods/cms_init.coffee', 'server');
     api.addFiles('server/methods/cms_site_build.coffee', 'server');
@@ -98,6 +99,7 @@ Package.onUse(function(api) {
 
     api.addFiles('server/routes/site.coffee', 'server');
     api.addFiles('server/routes/avatar.coffee', 'server');
+    api.addFiles('server/lib/cfs/posts.coffee', 'server');
     api.addAssets('themes/default.html', 'server');
 
     // EXPORT

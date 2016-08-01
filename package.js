@@ -35,6 +35,8 @@ Package.onUse(function(api) {
     api.use('aldeed:autoform@5.8.0');
     api.use('matb33:collection-hooks@0.8.1');
     api.use('cfs:standard-packages@0.5.9');
+    api.use('iyyang:cfs-aliyun')
+    api.use('cfs:s3');
     api.use('kadira:blaze-layout@2.3.0');
     api.use('kadira:flow-router@2.10.1');
 

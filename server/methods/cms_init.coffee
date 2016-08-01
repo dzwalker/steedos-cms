@@ -48,4 +48,4 @@ Meteor.methods
 		# 	title: TEMPLATE_POST_TITLE
 		# 	body: TEMPLATE_POST_BODY
 
-		return siteId
+		# return siteId

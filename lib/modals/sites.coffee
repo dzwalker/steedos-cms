@@ -47,6 +47,7 @@ db.cms_sites._simpleSchema = new SimpleSchema
 				
 	admins: 
 		type: [String],
+		optional: true,
 		autoform:
 			type: "selectuser"
 			multiple: true

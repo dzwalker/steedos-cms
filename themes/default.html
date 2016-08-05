@@ -349,7 +349,7 @@
 						<div class="box-body">
 							
 			            	<p class="post-title"><b>{{Post.title}}</b></p>
-				            <p class="post-date">{{fromNow modified}}</p>
+				            <p class="post-date">{{DateFormat Post.modified "YYYY-MM-DD hh:mm"}}</p>
 
 							<div class="post-body">
 								<p>{{Markdown Post.body}}</p>

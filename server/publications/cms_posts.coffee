@@ -18,6 +18,7 @@ Meteor.publish 'cms_posts', (siteId, postId)->
             fields: 
                 space: 1
                 site: 1
+                category: 1
                 title: 1
                 author: 1
                 author_name: 1

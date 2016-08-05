@@ -1,11 +1,23 @@
-  Meteor.publish 'cms_categories', (siteId)->
-  
-    unless this.userId
-      return this.ready()
-    
-    unless siteId
-      return this.ready()
+Meteor.publish 'cms_categories', (siteId)->
 
-    console.log '[publish] cms_categories for site ' + siteId
+	unless this.userId
+		return this.ready()
+	
+	unless siteId
+		return this.ready()
 
-    return db.cms_categories.find({site: siteId}, {sort: {order: 1}})
+	site = db.cms_sites.findOne(siteId)
+	unless site
+		return this.ready()
+
+	console.log '[publish] cms_categories for site ' + site.name
+
+	selector = {}
+
+	if site.admins and this.userId in site.admins
+		selector = 
+			site: siteId
+	else
+		selector = {$and: [{site: siteId},{$or: [{users: null},{users: this.userId}]}]}
+
+	return db.cms_categories.find(selector, {sort: {order: 1}})

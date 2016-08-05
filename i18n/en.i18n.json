@@ -50,6 +50,7 @@
     "cms_categories_id": "ID",
     "cms_categories_description": "Description",
     "cms_categories_parent": "Parent",
+    "cms_categories_users": "Authorized Users",
     "cms_categories_order": "Order No",
     "cms_categories_modified": "Modified",
     "cms_categories_space": "Space",

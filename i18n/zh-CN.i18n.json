@@ -50,10 +50,11 @@
     "cms_categories_id": "ID",
     "cms_categories_description": "描述",
     "cms_categories_parent": "上级栏目",
+    "cms_categories_users": "授权用户",
     "cms_categories_order": "排序号",
     "cms_categories_modified": "修改时间",   
     "cms_categories_space": "工作区",
-    "cms_categories_featured": "置顶",
+    "cms_categories_featured": "推荐",
     "cms_categories_menu": "在菜单中显示",
 
 

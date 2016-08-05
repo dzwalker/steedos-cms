@@ -53,7 +53,7 @@ db.cms_sites._simpleSchema = new SimpleSchema
 			multiple: true
 			defaultValue: ->
 				return [Meteor.userId()]
-
+			
 	anonymous:
 		type: Boolean,
 		defaultValue: true

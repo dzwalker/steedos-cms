@@ -96,6 +96,7 @@ Package.onUse(function(api) {
 
     api.addFiles('server/publications/cfs_posts.coffee', 'server');
     api.addFiles('server/publications/cms_categories.coffee', 'server');
+    api.addFiles('server/publications/cms_post.coffee', 'server');
     api.addFiles('server/publications/cms_posts.coffee', 'server');
     api.addFiles('server/publications/cms_sites.coffee', 'server');
     api.addFiles('server/publications/cms_tags.coffee', 'server');

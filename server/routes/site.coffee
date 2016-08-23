@@ -1,172 +1,192 @@
 Cookies = Npm.require("cookies")
 
 Template.registerHelpers = (dict) ->
-    _.each dict, (v, k)->
-        Template.registerHelper k, v
+	_.each dict, (v, k)->
+		Template.registerHelper k, v
 
 
 Template.registerHelpers
 
-    CategoryId: ()->
-        return Template.instance().data.params.categoryId
 
-    CategoryActive: (c)->
-        categoryId = Template.instance().data.params.categoryId
-        if categoryId == c
-            return "active"
+	CategoryId: ()->
+		return Template.instance().data.params.categoryId
 
-    Category: ()->
-        categoryId = Template.instance().data.params.categoryId
-        if categoryId
-            return db.cms_categories.findOne(categoryId)
+	CategoryActive: (c)->
+		categoryId = Template.instance().data.params.categoryId
+		if categoryId == c
+			return "active"
 
-    ParentCategory: ()->
-        categoryId = Template.instance().data.params.categoryId
-        if categoryId
-            c = db.cms_categories.findOne(categoryId)
-            if c?.parent
-                return db.cms_categories.findOne(c.parent)
+	Category: ()->
+		categoryId = Template.instance().data.params.categoryId
+		if categoryId
+			return db.cms_categories.findOne(categoryId)
 
-    SubCategories: (parent)->
-        if parent == "root"
-            siteId = Template.instance().data.params.siteId
-            return db.cms_categories.find({site: siteId, parent: null}, {sort: {order: 1, created: 1}})
-        else
-            return db.cms_categories.find({parent: parent}, {sort: {order: 1, created: 1}})
-            
-    SubCategoriesCount: (parent)->
-        if parent == "root"
-            siteId = Template.instance().data.params.siteId
-            return db.cms_categories.find({site: siteId, parent: null}).count()
-        else
-            return db.cms_categories.find({parent: parent}).count()
+	ParentCategory: ()->
+		categoryId = Template.instance().data.params.categoryId
+		if categoryId
+			c = db.cms_categories.findOne(categoryId)
+			if c?.parent
+				return db.cms_categories.findOne(c.parent)
 
-    fromNow: (value)->
-        return moment(value).fromNow()
+	SubCategories: (parent)->
+		if parent == "root"
+			siteId = Template.instance().data.params.siteId
+			return db.cms_categories.find({site: siteId, parent: null}, {sort: {order: 1, created: 1}})
+		else
+			return db.cms_categories.find({parent: parent}, {sort: {order: 1, created: 1}})
+			
+	SubCategoriesCount: (parent)->
+		if parent == "root"
+			siteId = Template.instance().data.params.siteId
+			return db.cms_categories.find({site: siteId, parent: null}).count()
+		else
+			return db.cms_categories.find({parent: parent}).count()
 
-    DateFormat: (value, formatString) ->
-        if !formatString
-            formatString = "YYYY-MM-DD"
-        return moment(value).format(formatString)
+	fromNow: (value)->
+		return moment(value).fromNow()
 
-    Posts: (categoryId, limit, skip)->
-        if !limit 
-            limit = 5
-        skip = 0
-        siteId = Template.instance().data.params.siteId
-        if siteId and categoryId
-            return db.cms_posts.find({site: siteId, category: categoryId}, {sort: {postDate: -1}, limit: limit, skip: skip})
-        else if siteId
-            return db.cms_posts.find({site: siteId}, {sort: {postDate: -1}, limit: limit, skip: skip})
+	DateFormat: (value, formatString) ->
+		if !formatString
+			formatString = "YYYY-MM-DD"
+		return moment(value).format(formatString)
 
-    PostsCount: (categoryId)->
-        siteId = Template.instance().data.params.siteId
-        if siteId and categoryId
-            return db.cms_posts.find({site: siteId, category: categoryId}).count()
-        else if siteId
-            return db.cms_posts.find({site: siteId}).count()
+	Posts: (categoryId, limit, skip)->
+		if !limit 
+			limit = 5
+		skip = 0
+		siteId = Template.instance().data.params.siteId
+		if !siteId 
+			return []
+		if categoryId 
+			return db.cms_posts.find({site: siteId, category: categoryId}, {sort: {postDate: -1}, limit: limit, skip: skip})
+		else
+			return db.cms_posts.find({site: siteId}, {sort: {postDate: -1}, limit: limit, skip: skip})
 
-    PostSummary: ->
-        if this.body
-            return this.body.substring(0, 400)
+	PostsCount: (categoryId)->
+		siteId = Template.instance().data.params.siteId
+		if !siteId 
+			return 0
+		if categoryId 
+			return db.cms_posts.find({site: siteId, category: categoryId}).count()
+		else
+			return db.cms_posts.find({site: siteId}).count()
+	   
+	PostSummary: ->
+		if this.body
+			return this.body.substring(0, 400)
+
+	_: (key) ->
+		return TAPi18n.__ key
+
+	RecentPosts: (categoryId, limit, skip)->
+		if !limit 
+			limit = 5
+		skip = 0
+		siteId = Template.instance().data.params.siteId
+		cat = db.cms_categories.findOne(categoryId)
+		if !cat 
+			return []
+		children = cat.calculateChildren();
+		children.push(categoryId)
+		return db.cms_posts.find({site: siteId, category: {$in: children}}, {sort: {postDate: -1}, limit: limit, skip: skip})
 
 
 Template.registerHelper 'Post', ->
-    postId = Template.instance().data.params.postId
-    if postId
-        return db.cms_posts.findOne({_id: postId})
+	postId = Template.instance().data.params.postId
+	if postId
+		return db.cms_posts.findOne({_id: postId})
 
 
 Template.registerHelper 'Attachments', ()->
-    postId = Template.instance().data.params.postId
-    if postId
-        post = db.cms_posts.findOne({_id: postId})
-        if post and post.attachments
-            return cfs.posts.find({_id: {$in: post.attachments}}).fetch()
+	postId = Template.instance().data.params.postId
+	if postId
+		post = db.cms_posts.findOne({_id: postId})
+		if post and post.attachments
+			return cfs.posts.find({_id: {$in: post.attachments}}).fetch()
 
 Template.registerHelper 'SiteId', ->
-    siteId = Template.instance().data.params.siteId
-    return siteId
+	siteId = Template.instance().data.params.siteId
+	return siteId
 
 Template.registerHelper 'Site', ->
-    siteId = Template.instance().data.params.siteId
-    if siteId
-        return db.cms_sites.findOne({_id: siteId})
+	siteId = Template.instance().data.params.siteId
+	if siteId
+		return db.cms_sites.findOne({_id: siteId})
 
 Template.registerHelper 'IndexPage', ->
-    data = Template.instance().data
-    if !data.params
-        return false;
-    else if data.params.categoryId
-        return false
-    else if data.params.postId
-        return false
-    else 
-        return true
+	data = Template.instance().data
+	if !data.params
+		return false;
+	else if data.params.categoryId
+		return false
+	else if data.params.postId
+		return false
+	else 
+		return true
 
 Template.registerHelper 'TagPage', ->
-    tag = Template.instance().data.params.tag
-    if tag
-        return true
-    return false
+	tag = Template.instance().data.params.tag
+	if tag
+		return true
+	return false
 
 Template.registerHelper 'Tag', ->
-    tag = Template.instance().data.params.tag
-    return tag
+	tag = Template.instance().data.params.tag
+	return tag
 
 Template.registerHelper 'PostPage', ->
-    postId = Template.instance().data.params.postId
-    if postId
-        return true
-    return false
+	postId = Template.instance().data.params.postId
+	if postId
+		return true
+	return false
 
 Template.registerHelper 'Markdown', (text)->
-    return Spacebars.SafeString(Markdown(text))
+	return Spacebars.SafeString(Markdown(text))
 
 Template.registerHelper 'equals', (a, b)->
-    return a == b
+	return a == b
 
 renderSite = (req, res, next) ->
-    site = db.cms_sites.findOne({_id: req.params.siteId})
-    
-    if !site
-        res.writeHead 404
-        res.end("Site not found")
-        return
+	site = db.cms_sites.findOne({_id: req.params.siteId})
+	
+	if !site
+		res.writeHead 404
+		res.end("Site not found")
+		return
 
-    cookies = new Cookies( req, res );
-    userId = cookies.get("X-User-Id")
-    authToken = cookies.get("X-Auth-Token")
+	cookies = new Cookies( req, res );
+	userId = cookies.get("X-User-Id")
+	authToken = cookies.get("X-Auth-Token")
 
-    if userId and authToken
-        hashedToken = Accounts._hashLoginToken(authToken)
-        user = Meteor.users.findOne
-            _id: userId,
-            "services.resume.loginTokens.hashedToken": hashedToken
+	if userId and authToken
+		hashedToken = Accounts._hashLoginToken(authToken)
+		user = Meteor.users.findOne
+			_id: userId,
+			"services.resume.loginTokens.hashedToken": hashedToken
 
-    if !site.anonymous 
-        if !user
-            res.writeHead 401
-            res.end("Access Denied")
-            return
+	if !site.anonymous 
+		if !user
+			res.writeHead 401
+			res.end("Access Denied")
+			return
 
-        if site.space 
-            su = db.space_users.findOne({space: site.space, user: userId})
-            if !su
-                res.writeHead 401
-                res.end("Access Denied")
-                return
+		if site.space 
+			su = db.space_users.findOne({space: site.space, user: userId})
+			if !su
+				res.writeHead 401
+				res.end("Access Denied")
+				return
 
-    templateName = 'site_theme_' + site.theme
-    layout = site.layout
-    if !layout
-        layout = Assets.getText('themes/default.html')
-    SSR.compileTemplate('site_theme_' + site.theme, layout);
+	templateName = 'site_theme_' + site.theme
+	layout = site.layout
+	if !layout
+		layout = Assets.getText('themes/default.html')
+	SSR.compileTemplate('site_theme_' + site.theme, layout);
 
-    html = SSR.render templateName, 
-        params: req.params
+	html = SSR.render templateName, 
+		params: req.params
 
-    res.end(html);
+	res.end(html);
 
 # JsonRoutes.add "get", "/site/:siteId", (req, res, next)->
 #   res.statusCode = 302;

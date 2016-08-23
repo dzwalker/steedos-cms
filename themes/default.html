@@ -292,7 +292,7 @@
 							<div class="box box-solid">
 							  <div class="box-body no-padding">
 								<ul class="nav nav-pills nav-stacked">
-									{{#each SubCategories "root"}}
+									{{#each SubCategories Category._id}}
 										<li><a href="/site/{{SiteId}}/c/{{_id}}"><i class="ion ion-ios-folder-outline"></i>{{name}}</a></li>
 									{{/each}}
 								</ul>
@@ -301,7 +301,7 @@
 						</div>
 						{{/if}}
 						<div class="{{#if SubCategoriesCount Category._id}}col-sm-9{{else}}col-sm-12{{/if}}">
-							{{#each Posts Category._id 20}}
+							{{#each Posts Category._id 200}}
 								<div class="box box-widget">
 									<!-- <div class="box-header with-border">
 									  <h3 class="box-title"><a href="/site/{{SiteId}}/p/{{_id}}">{{title}}</a></h3>

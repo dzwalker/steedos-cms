@@ -2,6 +2,7 @@ Steedos.subsSite = new SubsManager();
 
 Tracker.autorun (c)->
 	if Session.get("spaceId")
+		Steedos.subsSite.clear();
 		Steedos.subsSite.subscribe "cms_sites", Session.get("spaceId")
 	if Session.get("siteId")
 		Steedos.subsSite.clear()

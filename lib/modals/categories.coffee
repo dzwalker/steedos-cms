@@ -51,7 +51,7 @@ db.cms_categories._simpleSchema = new SimpleSchema
 		autoform: 
 			omit: true
 
-	users: 
+	admins: 
 		type: [String],
 		optional: true,
 		autoform:

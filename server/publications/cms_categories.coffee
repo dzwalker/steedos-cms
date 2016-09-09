@@ -14,10 +14,10 @@ Meteor.publish 'cms_categories', (siteId)->
 
 	selector = {}
 
-	# if site.admins and this.userId in site.admins
-	# 	selector = 
-	# 		site: siteId
-	# else
-	selector = {$and: [{site: siteId},{$or: [{users: null},{users: this.userId}]}]}
+	if site.admins and this.userId in site.admins
+		selector = 
+			site: siteId
+	else
+		selector = {$and: [{site: siteId},{$or: [{admins: null},{admins: this.userId}]}]}
 
 	return db.cms_categories.find(selector, {sort: {order: 1}})

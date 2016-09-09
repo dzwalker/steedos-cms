@@ -55,7 +55,7 @@ if Meteor.isClient
                     db.cms_sites.adminConfig.routerAdmin = "/cms/s/" + Session.get("siteId")
                     db.cms_categories.adminConfig.routerAdmin = "/cms/s/" + Session.get("siteId")
                     db.cms_posts.adminConfig.routerAdmin = "/cms/s/" + Session.get("siteId")
-                    AdminTables["cms_posts"]?.selector = {site: Session.get("siteId"), created_by: Meteor.userId()}
+                    AdminTables["cms_posts"]?.selector = {site: Session.get("siteId"), author: Meteor.userId()}
                     AdminTables["cms_categories"]?.selector = {site: Session.get("siteId")}
                     AdminTables["cms_tags"]?.selector = {site: Session.get("siteId")}
                     AdminTables["cms_pages"]?.selector = {site: Session.get("siteId")}

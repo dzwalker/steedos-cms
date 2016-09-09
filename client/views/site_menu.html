@@ -2,11 +2,13 @@
 
    <!--  <a href="/admin/new/cms_posts" class="btn btn-primary btn-block margin-bottom"><i class="ion ion-ios-compose-outline"></i> {{_ "cms_button_new"}}</a> -->
 
-    {{#if isSiteAdmin}}
-      {{#if PostId}}
-          <a href="/admin/edit/cms_posts/{{PostId}}" class="btn btn-success btn-block margin-bottom"><i class="ion ion-ios-compose-outline"></i> <span>{{_ "cms_button_edit"}}</span></a>
-      {{else}}
-          <a href="/admin/new/cms_posts" class="btn btn-primary btn-block margin-bottom"><i class="ion ion-ios-compose-outline"></i> <span>{{_ "cms_button_new"}}</span></a>
+    {{#if PostId}}
+      {{#if isPostAuthor}}
+            <a href="/admin/edit/cms_posts/{{PostId}}" class="btn btn-success btn-block margin-bottom"><i class="ion ion-ios-compose-outline"></i> <span>{{_ "cms_button_edit"}}</span></a>
+      {{/if}}
+    {{else}}
+      {{#if isCategoryAdmin CategoryId}}
+            <a href="/admin/new/cms_posts" class="btn btn-primary btn-block margin-bottom"><i class="ion ion-ios-compose-outline"></i> <span>{{_ "cms_button_new"}}</span></a>
       {{/if}}
     {{/if}}
 

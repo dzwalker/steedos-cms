@@ -142,6 +142,24 @@ CMS.helpers =
 			site = db.cms_sites.findOne({_id: siteId})
 			return site?.admins.contains(Meteor.userId())
 
+	isCategoryAdmin: (categoryId)->
+		siteId = Session.get("siteId")
+		if siteId
+			site = db.cms_sites.findOne({_id: siteId})
+			if site?.admins.contains(Meteor.userId())
+				return true
+		if categoryId
+			cat = db.cms_categories.findOne({_id: categoryId})
+			return cat?.admins?.contains(Meteor.userId())
+		return false
+
+	isPostAuthor: (postId)->
+		postId = FlowRouter.current().params.postId
+		if postId
+			post = db.cms_posts.findOne({_id: postId})
+			return post?.author == Meteor.userId()
+		reurn false
+
 	Tags: ->
 		siteId = Session.get("siteId")
 		if siteId

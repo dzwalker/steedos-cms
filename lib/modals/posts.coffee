@@ -66,6 +66,7 @@ db.cms_posts._simpleSchema = new SimpleSchema
 						['insert', ['link', 'picture']],
 						['view', ['codeview']]
 					]
+					fontNames: ['Arial', 'Comic Sans MS', 'Courier New', 'Helvetica', 'Impact', '宋体','黑体','微软雅黑','仿宋','楷体','隶书','幼圆']
 
 	image:
 		type: [String]

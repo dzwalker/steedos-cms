@@ -55,6 +55,17 @@ db.cms_posts._simpleSchema = new SimpleSchema
 				class: 'editor'
 				settings: 
 					height: 200
+					dialogsInBody: true
+					toolbar:  [
+						['font1', ['style']],
+						['font2', ['bold', 'underline', 'italic', 'clear']],
+						['font3', ['fontname']],
+						['color', ['color']],
+						['para', ['ul', 'ol', 'paragraph']],
+						['table', ['table']],
+						['insert', ['link', 'picture']],
+						['view', ['codeview']]
+					]
 
 	image:
 		type: [String]

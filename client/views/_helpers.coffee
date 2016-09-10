@@ -172,5 +172,9 @@ CMS.helpers =
 		if text
 			return Spacebars.SafeString(Markdown(text))
 
+	SafeString: (text)->
+		if text
+			return Spacebars.SafeString(text)
+
 	subsReady: ()->
 		return Steedos.subsBootstrap.ready() and Steedos.subsSite.ready()

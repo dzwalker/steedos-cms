@@ -29,7 +29,8 @@
 
     "cms_posts": "文章",
     "cms_posts_title": "标题",
-    "cms_posts_body": "正文",
+    "cms_posts_body": "摘要",
+    "cms_posts_htmlBody": "正文",
     "cms_posts_id": "ID",
     "cms_posts_space": "工作区",
     "cms_posts_site": "网站",

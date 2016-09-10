@@ -43,15 +43,19 @@ db.cms_posts._simpleSchema = new SimpleSchema
 		type: String,
 		optional: false,
 		autoform: 
-			rows: 10,
+			rows: 5,
 			order: 30
  
-	# htmlBody: 
-	# 	type: String,
-	# 	optional: true
-	# 	autoform:
-	# 		omit: true
-	
+	htmlBody: 
+		type: String,
+		optional: true
+		autoform:
+			afFieldInput: 
+				type: 'summernote'
+				class: 'editor'
+				settings: 
+					height: 200
+
 	image:
 		type: [String]
 		optional: true
@@ -119,7 +123,6 @@ db.cms_posts._simpleSchema = new SimpleSchema
 		type: Date,
 		optional: true,
 		autoform: 
-			omit: true
 			type: "bootstrap-datetimepicker"
 			
 	# The post author's name

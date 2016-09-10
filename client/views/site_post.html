@@ -33,7 +33,11 @@
 				        <p class="post-date">{{author_name}} {{fromNow postDate}}</p>
 
 						<div class="post-body">
-							{{{Markdown body}}}
+							{{#if htmlBody}}
+								<p>{{SafeString htmlBody}}</p>
+							{{else}}
+								<p>{{Markdown body}}</p>
+							{{/if}}
 						</div>
 						
 						<div class="post-images">

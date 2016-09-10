@@ -48,6 +48,9 @@ Package.onUse(function(api) {
     api.use('iyyang:cfs-aliyun@0.1.0');
     api.use('cfs:s3@0.1.3');
 
+    api.use('summernote:summernote');
+    api.use('mpowaga:autoform-summernote@0.4.3');
+
 
 
     //api.add_files("package-tap.i18n", ["client", "server"]);

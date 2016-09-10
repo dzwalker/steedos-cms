@@ -90,6 +90,13 @@ Template.registerHelpers
 		children.push(categoryId)
 		return db.cms_posts.find({site: siteId, category: {$in: children}}, {sort: {postDate: -1}, limit: limit, skip: skip})
 
+	Markdown: (text)->
+		if text
+			return Spacebars.SafeString
+
+	SafeString: (text)->
+		if text
+			return Spacebars.SafeString(text)
 
 Template.registerHelper 'Post', ->
 	postId = Template.instance().data.params.postId
@@ -140,8 +147,6 @@ Template.registerHelper 'PostPage', ->
 		return true
 	return false
 
-Template.registerHelper 'Markdown', (text)->
-	return Spacebars.SafeString(Markdown(text))
 
 Template.registerHelper 'equals', (a, b)->
 	return a == b

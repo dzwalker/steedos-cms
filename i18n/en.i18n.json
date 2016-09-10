@@ -29,7 +29,8 @@
 
     "cms_posts": "Posts",
     "cms_posts_title": "Title",
-    "cms_posts_body": "Body",
+    "cms_posts_body": "Summary",
+    "cms_posts_htmlBody": "Body",
     "cms_posts_id": "ID",
     "cms_posts_space": "Space",
     "cms_posts_site": "Site",

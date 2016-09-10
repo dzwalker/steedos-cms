@@ -25,3 +25,4 @@ Meteor.publish 'cms_posts', (siteId, categories)->
             author_name: 1
             summary: 1
             image: 1
+            postDate: 1

@@ -45,6 +45,7 @@
     "cms_posts_author_name": "Author",
     "cms_posts_summary": "Summary",
     "cms_posts_images": "Images",
+    "cms_posts_postDate": "Publish Date",
 
     "cms_categories": "Categories",
     "cms_categories_name": "Name",

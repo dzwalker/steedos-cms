@@ -92,7 +92,7 @@ Template.registerHelpers
 
 	Markdown: (text)->
 		if text
-			return Spacebars.SafeString
+			return Spacebars.SafeString(Markdown(text))
 
 	SafeString: (text)->
 		if text
